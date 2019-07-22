@@ -28,16 +28,14 @@ import fr.vsct.tock.bot.connector.slack.model.SlackConnectorMessage
 import fr.vsct.tock.bot.connector.slack.model.SlackMessageOut
 import fr.vsct.tock.bot.connector.slack.model.UrlVerificationEvent
 import fr.vsct.tock.bot.connector.slack.model.old.SlackMessageIn
+import fr.vsct.tock.bot.definition.Intent
 import fr.vsct.tock.bot.engine.BotBus
 import fr.vsct.tock.bot.engine.BotRepository.requestTimer
 import fr.vsct.tock.bot.engine.ConnectorController
 import fr.vsct.tock.bot.engine.action.Action
 import fr.vsct.tock.bot.engine.event.Event
 import fr.vsct.tock.bot.engine.monitoring.logError
-import fr.vsct.tock.shared.Executor
-import fr.vsct.tock.shared.booleanProperty
-import fr.vsct.tock.shared.error
-import fr.vsct.tock.shared.injector
+import fr.vsct.tock.shared.*
 import fr.vsct.tock.shared.jackson.mapper
 import fr.vsct.tock.shared.vertx.vertx
 import mu.KotlinLogging
@@ -210,7 +208,7 @@ class SlackConnector(
                 },
                 slackMessage(
                     subTitle ?: title ?: "",
-                    slackAttachment(null, message.actions.filter { it.url == null }.map { slackButton(it.title) }))
+                    slackAttachment(null, message.actions.filter { it.url == null }.map { slackButton(it.title, targetIntent = Intent("${it.title}")) }))
             )
         } else {
             emptyList()

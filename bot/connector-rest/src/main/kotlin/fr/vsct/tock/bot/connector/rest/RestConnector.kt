@@ -121,7 +121,11 @@ class RestConnector(
 
 
     override fun toConnectorMessage(message: MediaMessage): BotBus.() -> List<ConnectorMessage> = {
-        getTargetConnector(targetConnectorType)?.toConnectorMessage(message)?.invoke(this) ?: emptyList()
+        logger.info { "$this # toConnectorMessage($message)" }
+        logger.info { "targetConnectorType = $targetConnectorType" }
+        getTargetConnector(targetConnectorType)?.toConnectorMessage(message)
+                .also { logger.info { "getTargetConnector(targetConnectorType)?.toConnectorMessage(message) -> $it" } }
+                ?.invoke(this) ?: emptyList()
     }
 
 }

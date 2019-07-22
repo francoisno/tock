@@ -34,6 +34,7 @@ import fr.vsct.tock.bot.connector.ConnectorMessage
 import fr.vsct.tock.bot.connector.media.MediaAction
 import fr.vsct.tock.bot.connector.media.MediaCard
 import fr.vsct.tock.bot.connector.media.MediaFile
+import fr.vsct.tock.bot.connector.slack.model.Button
 import fr.vsct.tock.bot.engine.BotBus
 import fr.vsct.tock.bot.engine.WebSocketController
 import fr.vsct.tock.bot.engine.action.Action
@@ -41,6 +42,7 @@ import fr.vsct.tock.bot.engine.action.SendAttachment.AttachmentType
 import fr.vsct.tock.bot.engine.action.SendSentence
 import fr.vsct.tock.bot.engine.config.UploadedFilesService
 import fr.vsct.tock.bot.engine.message.ActionWrappedMessage
+import fr.vsct.tock.bot.engine.message.Choice
 import fr.vsct.tock.bot.engine.message.MessagesList
 import fr.vsct.tock.nlp.api.client.model.Entity
 import fr.vsct.tock.nlp.api.client.model.EntityType
@@ -121,6 +123,13 @@ internal class BotApiHandler(
 
     fun send(bus: BotBus) {
         val request = bus.toUserRequest()
+        logger.info { "bus.intent = ${bus.intent}" }
+        logger.info { "bus.intent?.wrappedIntent() = ${bus.intent?.wrappedIntent()}" }
+        logger.info { "bus.action = ${bus.action}" }
+        logger.info { "bus.story = ${bus.story}" }
+        logger.info { "bus.definition = ${bus.story.definition}" }
+        logger.info { "bus.definition.id = ${bus.story.definition.id}" }
+        logger.info { "bus.toUserRequest() -> $request" }
         if (client != null) {
             val response = client.send(RequestData(request))
             bus.handleResponse(request, response?.botResponse)
@@ -206,18 +215,30 @@ internal class BotApiHandler(
     }
 
     private fun BotBus.send(message: BotMessage, end: Boolean = false) {
+
+        logger.info { "send(message = $message" }
+
         val actions =
             when (message) {
                 is Sentence -> listOf(toAction(message))
-                is Card -> toActions(message)
+                is Card -> {
+                    val actions = toActions(message)
+                    logger.info { "toActions(card) -> $actions" }
+                    actions
+                }
                 is CustomMessage -> listOf(toAction(message))
                 else -> error("unsupported message $message")
             }
+
+        logger.info { "actions = $actions" }
+        logger.info { "actions types = ${actions.map { it.javaClass.canonicalName }}" }
 
         if (actions.isEmpty()) {
             error("no message find in $message")
         }
         val messagesList = MessagesList(actions.map { ActionWrappedMessage(it, 0) })
+        val messagesList = MessagesList(actions.map { Choice(it.choice("title")) })
+
         val delay = botDefinition.defaultDelay(currentAnswerIndex)
         if (end) {
             end(messagesList, delay)
@@ -261,11 +282,18 @@ internal class BotApiHandler(
     private fun BotBus.toActions(card: Card): List<Action> {
         val connectorMessages =
             toMediaCard(card)
-                .takeIf { it.isValid() }
+                    .also { logger.info { "toMediaCard -> $it" } }
+                .takeIf { it.isValid().also { logger.info { "isValid -> $it" } } }
+                    .also { logger.info { "takeIfValid -> $it" } }
                 ?.let {
-                    underlyingConnector.toConnectorMessage(it).invoke(this)
+                    underlyingConnector
+                            .also { logger.info { "underlyingConnector = $it" } }
+                            .toConnectorMessage(it)
+                            .also { logger.info { "toConnectorMessage -> $it" } }
+                            .invoke(this)
                 }
 
+        logger.info { "connectorMessages = $connectorMessages" }
         return connectorMessages?.map {
             SendSentence(
                 botId,
