@@ -6,23 +6,59 @@ repo_name: 'tock'
 repo_url: 'https://github.com/voyages-sncf-technologies/tock'
 edit_uri: ''
 nav:
-  - 'Présentation': 'index.md'
-  - 'Pour commencer': 'pour-commencer.md'
-  - 'Construire le modèle': 'construire-le-modele.md'
-  - 'Evaluer la pertinence du modèle': 'evaluer-la-pertinence-du-modele.md'
-  - 'Développer un Assistant': 'developper-un-assistant.md'
-  - 'Assistant Tock':
-    - 'Présentation du Bot Open Data': 'presentation-du-bot-open-data.md'
-    - 'Développer': 'developper.md'
-    - 'Tester': 'tester.md'
-  -  'Assistant via API':
-     - 'Développer via API': 'developper-api.md'
-  - 'i18n': 'i18n.md'
-  - 'APIs de Tock': 'api.md'
-  - 'KDoc': 'kdoc.md'
-  - 'Contribuer au projet': 'contribuer.md'
-  - 'Installation de Tock': 'installation.md'
-  - 'Nous contacter': 'contact.md'
+  - 'Vue d`ensemble': 'introduction.md' # intro, features, taks & videos, quick start & samples
+  - 'Découvrir Tock (guides)': # Guides / Découvrir
+      - 'Créer son premier assistant': 'getting-started/start-studio.md'
+      - 'Configurer Slack': 'getting-started/start-slack.md'
+      - 'Configurer Messenger': 'getting-started/start-messenger.md'
+      - 'Programmer des parcours': 'getting-started/start-api.md'
+      - 'Déployer avec Docker': 'getting-started/start-platform.md'
+  - 'Utiliser Tock (manuel)': # Manuel utilisateur / Apprendre
+      - 'Table des matières': 'user-manual/toc.md'
+      - 'Concepts': 'user-manual/concepts.md'
+      - 'Tock Studio': 'user-manual/studio.md'
+      - 'Tock Bot Api': 'user-manual/bot-api.md'
+      - 'Tock Bot Framework': 'user-manual/bot-framework.md'
+      - 'Les connecteurs': # 'connectors.md'
+        - 'Messenger': 'user-manual/connector-messenger.md'
+        - 'Slack': 'user-manual/connector-slack.md'
+        - 'Google Assistant / Home': 'user-manual/connector-ga.md'
+        - 'Alexa / Echo': 'user-manual/connector-alexa.md'
+        - 'RocketChat': 'user-manual/connector-rocketchat.md'
+        - 'WhatsApp': 'user-manual/connector-whatsapp.md'
+        - 'Teams': 'user-manual/connector-teams.md'
+        - 'Business Chat / Messages': 'user-manual/connector-bc.md'
+        - 'Twitter': 'user-manual/connector-twitter.md'
+      - 'Déploiement':
+          - 'Architecture': 'user-manual/deploy-architecture.md'
+          - 'Déployer une plateforme Tock': 'user-manual/deploy-platform.md'
+          - 'Déployer un bot Tock': 'user-manual/deploy-bot.md'
+          - 'Cloud, charge, supervision, disponibilité...': 'deploy-misc.md'
+  - 'Exemples': # 'guides.md'
+      - 'Etude de cas': 'examples/users.md'
+      - 'Présentations & vidéo': 'examples/presentations.md'
+      - 'Exemples de code': 'examples/samples.md'
+  - 'A propos': # 'about.md' # Nous contacter / Contribuer / Remerciements
+      - 'Nous contacter': 'about/community.md' # Nous contacter / Contribuer / Remerciements
+      - 'Remerciements': 'about/acknowledgments.md' # Nous contacter / Contribuer / Remerciements
+      - 'Contribuer': 'about/contribute.md' # Nous contacter / Contribuer / Remerciements
+
+
+#    - 'Pour commencer': 'pour-commencer.md'
+#  - 'Construire le modèle': 'construire-le-modele.md'
+#  - 'Evaluer la pertinence du modèle': 'evaluer-la-pertinence-du-modele.md'
+#  - 'Développer un Assistant': 'developper-un-assistant.md'
+#  - 'Assistant Tock':
+#    - 'Présentation du Bot Open Data': 'presentation-du-bot-open-data.md'
+#    - 'Développer': 'developper.md'
+#    - 'Tester': 'tester.md'
+#  -  'Assistant via API':
+#     - 'Développer via API': 'developper-api.md'
+#  - 'i18n': 'i18n.md'
+#  - 'APIs de Tock': 'api.md'
+#  - 'KDoc': 'kdoc.md'
+#  - 'Contribuer au projet': 'contribuer.md'
+#  - 'Installation de Tock': 'installation.md'
 theme:
   name: 'material'
   language: 'fr'

@@ -1,12 +1,3 @@
-# Bienvenue dans la documentation de Tock!
-
-## Présentation
-
-**Tock** (*The Open Conversation Kit*) est une boite à outils permettant de construire des agents conversationnels (ou bots). 
-
-Contrairement à la plupart des autres solutions, il ne dépend pas d’API tierces (mais peut en intégrer aisément si nécessaire) : il est donc possible de conserver le contrôle complet de ses données et de ses algorithmes.
-
-Le code source de l'ensemble se trouve sur github : [https://github.com/voyages-sncf-technologies/tock](https://github.com/voyages-sncf-technologies/tock) sous la [licence Apache 2](https://github.com/voyages-sncf-technologies/tock/blob/master/LICENSE). 
 
 Deux composants majeurs sont disponibles, le moteur NLP ( pour Natural Language Processing ou [TALN](https://fr.wikipedia.org/wiki/Traitement_automatique_du_langage_naturel) en français),
  et un framework conversationnel qui intègre les services NLP et différents connecteurs comme Messenger, Google Assistant ou Slack. 
@@ -66,44 +57,6 @@ Il est possible d'en créer facilement d'autres, que ce soit pour se connecter �
 ### Suivi des conversations
 Enfin une interface d'administration est mise à disposition et permet de tester les bots et de suivre les conversations des utilisateurs. 
 
-## Genèse du projet
-                    
-Le projet a été initié en 2016 par l'équipe Innovation de [Oui.sncf](https://www.oui.sncf/) 
-dans un premier temps afin de motoriser l'analyse des commandes vocales sur ses [applications mobiles](https://www.oui.sncf/mobile).
-
-L'outil a ensuite été utilisé pour implémenter son [Bot Messenger](https://www.messenger.com/t/oui.sncf).
-
-Depuis, une [équipe dédiée](https://open.voyages-sncf.com/ouiwork/innovation/assistant-google-et-google-home-atelier-de-decouverte-test-et-discussions) au sein de OUI.sncf fait évoluer et maintient la solution.
-
-L'[assistant Google OUI.sncf](https://assistant.google.com/services/a/id/164effe7c138100b/) est également basé sur Tock,
-de même que le [OUIbot](https://www.oui.sncf/bot/).
-
-Les outils ont été open-sourcés dans le but de mutualiser l'effort avec d'autres équipes
- qui souhaiterait développer des assistants ou bots. 
-
-## Technologies
-
-La plateforme applicative se base sur la [JVM](https://fr.wikipedia.org/wiki/Machine_virtuelle_Java).
- 
-Le langage de référence est [Kotlin](https://kotlinlang.org/).
-
-Le reste de la panoplie applicative est constituée de [Vert.x](http://vertx.io/) et [MongoDB](https://www.mongodb.com ), même si pour l’instant les applications sont essentiellement développés en « blocking IO ». En cible, l’approche « fibers » ( cf [http://docs.paralleluniverse.co/quasar/](http://docs.paralleluniverse.co/quasar/)) sera privilégiée.
-
-Les interfaces d'administration sont implémentées en [Angular4](https://angular.io/)/[Typescript](https://www.typescriptlang.org/).
-
-Cependant il est tout à fait possible de développer des applications en utilisant d'autres languages de programmation via les APIs mis à disposition.
-
-## Les différents projets open-sourcés
-
-* Le projet principal se trouve sous licence [Apache](https://github.com/voyages-sncf-technologies/tock/blob/master/LICENSE). Le code source est disponible sur GitHub : [https://github.com/voyages-sncf-technologies/tock](https://github.com/voyages-sncf-technologies/tock)
-
-* Cependant une dépendance optionnelle,  [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/), est sous licence [GPL](https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU). 
- Le code utilisant cette dépendance se trouve donc dans un projet à part, sous licence GPL : [https://github.com/voyages-sncf-technologies/tock-corenlp](https://github.com/voyages-sncf-technologies/tock-corenlp)
-
-Enfin deux autres projets sont mis à disposition : 
- 
-* Un projet contenant des images dockers avec comme objectif de faciliter la prise en main : [https://github.com/voyages-sncf-technologies/tock-docker](https://github.com/voyages-sncf-technologies/tock-docker)
-* Un projet contenant un exemple d'implémentation de bot se basant sur les [API SNCF](https://www.digital.sncf.com/startup/api) en Open Data : [https://github.com/voyages-sncf-technologies/tock-bot-open-data](https://github.com/voyages-sncf-technologies/tock-bot-open-data) 
 
 ## Plateforme de démonstration
 
