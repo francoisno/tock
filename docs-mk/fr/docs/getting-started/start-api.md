@@ -37,7 +37,7 @@ ou passer directement au [manuel utilisateur](../user-manual/toc.md) pour en sav
 
 ## Pré-requis
 
-* Environ 5 à 10 minutes
+* Environ 10 minutes
 
 * Un bot Tock fonctionnel (par exemple suite au guide [premier bot Tock](start-studio.md))
 
@@ -132,7 +132,9 @@ la dépendance `tock-bot-api-websocket` incluse :
 
 ## Créer une fonction qui se connecte à Tock
 
-Créer un fichier Kotlin (par exemple dans `src/main/kotlin/StartWebSocket.kt) et éditez-le avec le code suivant :
+* Créez un fichier Kotlin (par exemple dans `src/main/kotlin/StartWebSocket.kt)
+ 
+* Editez-le avec le code suivant :
 
 ```kotlin
 import fr.vsct.tock.bot.api.client.newBot
@@ -143,9 +145,78 @@ fun main() {
     startWithDemo( // Integrate with the Tock demo platform by default
             newBot(
                     "PUT-YOUR-TOCK-APP-API-KEY-HERE", // Get your app API key from Bot Configurations in Tock Studio
-                    newStory("bonjour") { // Answer for the 'bonjour' story
-                        end("Coucou")
+                    newStory("qui-es-tu") { // Answer for the 'qui-es-tu' story
+                        send("Je suis un assistant conversationnel construit avec Tock")
+                        end("Comment puis-je aider ?")
                     }
             ))
 }
 ```
+
+* Remplacez la clef d'API par celle de votre propre application Tock. Pour cela, dans _Tock Studio_, 
+allez dans _Configuration_ > _Bot Configurations_ et reportez la valeur _API Key_ dans le code.
+
+* Exécutez la fonction (_main_) dans votre environnement de développement. Vous devriez voir apparaître une ligne 
+de log ressemblant à celle-ci :
+
+```
+[main] INFO  fr.vsct.tock.bot.api.websocket.BotApiWebSocketClient - start web socket client: {...}
+```
+
+> Vérifiez éventuellement que d'autres logs provenant de `BotApiWebSocketClient` n'indiquent pas d'erreur. Si c'est le cas,
+> il peut s'agir d'une erreur de configuration de la clef d'API.
+
+## Terminer la configuration dans _Tock Studio_
+
+* Retournez dans Tock et allez dans _Build_ > _Search Stories_
+
+* Décochez l'option _Only Configured Stories_. Vous voyez alors tous parcours, y compris "qui-es-tu" que vous venez de 
+déclarer programmatiquement
+
+* Allez dans _Test_ > _Test the bot_ et saisissez une ou plusieurs phrases comme "qui es-tu ?" par exemple.
+VOus contastez que le bot ne répond pas encore à cette question - il répond peut-être même à une autre 
+intention. Il reste en effet une configuration à effectuer pour que la _qualification_ fonctionne.
+
+A ce stade, le parcours existe bien dans Tock, mais l'_intention_ n'a pas été créée automatiquement.
+Vous pouvez le vérifier en regardant la liste des intentions disponibles dans _NLU_ > _Intents_ > _build_ 
+(la catégorie par défaut).
+
+> TODO : pourquoi ?
+
+* Allez dans _NLU_ > _Inbox_, pour la dernière phrase que vous venez de saisir :
+
+    * Changez l'intention pour _New intent_
+    
+    * Nommez-la "qui-es-tu" comme dans le code (pour que le lien se fasse)
+    
+    * Créez l'intention avec _Create_
+    
+    * Puis terminez la qualification de la phrase avec _Validate_
+    
+* Si vous avez saisi d'autres phrases pour cette intention, pour chacune d'elles sélectionnez l'intention dans la 
+liste puis confirmez avec _Validate_
+
+* Retournez dans _Test_ > _Test the bot_. Si vous reposez la question, le bot vous donne désormais la réponse 
+construite dans le code Kotlin (ie. "Je suis un assistant...").
+
+
+## Félicitations!
+
+Vous venez de configurer votre première _story_ programmatique en Kotlin.
+
+De cette manière, vous pouvez tirer pleinement parti des possibilités d'un langage de programmation pour 
+construire toutes sortes de parcours simples et complexes, interroger des API tierces, implémenter des 
+ règles de gestion, etc.
+
+> Si vous programmez ainsi une _story_ déjà définie dans _Tock Studio_, c'est la définition présente dans _Tock Studio_ 
+>qui est utilisée pour construire les réponses à l'exécution.
+
+## Continuer...
+
+Dans la section suivante vous apprendez à :
+
+* [Déployer une plateforme Tock](start-platform.md) en quelques minutes avec Docker
+
+Pour en savoir plus sur l'utilisation de _Tock Bot API_ en mode _WebSocket_, mais aussi les autres 
+modes de déploiement, les types de messages supportés par Tock, etc. vous pouvez consulter le
+ [manuel utilisateur](../user-manual/toc.md).
