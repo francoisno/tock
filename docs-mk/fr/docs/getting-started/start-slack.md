@@ -14,7 +14,7 @@ ou passer directement à [la suite](start-api.md).
 
 ## Pré-requis
 
-* Entre 5 et 10 minutes environ
+* Environ 15 minutes
 
 * Un bot Tock fonctionnel (par exemple suite au guide [premier bot Tock](start-studio.md))
 
@@ -51,13 +51,13 @@ ou passer directement à [la suite](start-api.md).
 
 * Trouvez votre connecteur de type _Slack_ (ou créez-en un nouveau si besoin) et ouvrez la section _Connector Custom Configuration_
 
-* Saisissez dans les trois champs _tokens_ les jetons issus de la _WebhookURL_ précédemment copiée :
+* Saisissez dans les trois champs _tokens_ les jetons issus de l'adresse précédemment copiée :
 
-    * _Token 1_ : le premier token aussi appelé _workspaceToken_ ci-dessus
+    * _Token 1_ : le premier token de la _WebhookURL_, ou _workspaceToken_
 
-    * _Token 2_ : le deuxième token aussi appelé _webhookToken_ ci-dessus
+    * _Token 2_ : le deuxième token de la _WebhookURL_, ou _webhookToken_
 
-    * _Token 3_ : le dernier token aussi appelé _authToken_ ci-dessus
+    * _Token 3_ : le dernier token de la _WebhookURL_, ou _authToken_
 
 * Terminez avec _Update_
 
