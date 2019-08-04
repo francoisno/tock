@@ -8,7 +8,7 @@ edit_uri: ''
 nav:
   - 'Vue d`ensemble': 'introduction.md' # intro, features, taks & videos, quick start & samples
   - 'Découvrir Tock (guides)': # Guides / Découvrir
-      - 'Créer son premier assistant': 'getting-started/start-studio.md'
+      - 'Créer son premier bot': 'getting-started/start-studio.md'
       - 'Configurer Slack': 'getting-started/start-slack.md'
       - 'Configurer Messenger': 'getting-started/start-messenger.md'
       - 'Programmer des parcours': 'getting-started/start-api.md'

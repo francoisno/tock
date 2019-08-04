@@ -1,4 +1,4 @@
-# Créer son premier assistant avec Tock Studio
+# Créer son premier bot avec Tock Studio
 
 Un bon moyen de tester Tock est certainement de créer son premier bot conversationnel dans _Tock Studio_ (l'interface 
 graphiques fournie avec la plateforme).
@@ -16,7 +16,7 @@ est possible de créer et tester un assistant en quelques minutes sans écrire d
 
 ## Pré-requis
 
-* Environ 10 minutes
+* Entre 5 et 15 minutes environ (en lisant les commentaires)
 
 * Un compte github pour se connecter à la plateforme de démonstration
 
@@ -90,7 +90,7 @@ Un bot conversationnel analyse les phrases des utilisateurs en langage naturel, 
 reconnaître une intention "météo" et une entité "demain" venant préciser/paramétrer cette intention.
 
 Encore faut-il avoir déclaré les intentions et entités possibles, puis qualifié des phrases pour apprendre au bot à 
-détecter cette intention correctement. Le menu _NLU_ de Tock permet de gérer intentions et entités, qualifier les phrases 
+les détecter. Le menu _NLU_ de Tock permet de gérer intentions et entités, qualifier les phrases 
 et ainsi superviser l'apprentissage du bot : **plus on qualifie de phrases, plus le bot devient pertinent** dans sa compréhension du langage.
 
 Mais laissons intentions et entités de côté pour le moment...
@@ -120,13 +120,19 @@ Il est maintenant temps de tester le bot et votre premier parcours!
 
 * Allez dans _Test_ > _Test the bot_
 
-* Dites "bonjour", le bot vous répond 🤖
+* Dites "bonjour" 🙋, le bot vous répond 🤖
 
-> Si vous obtenez un message d'erreur technique, il s'agit probablement d'une erreur de configuration du connecteur.
+> Si le bot répond qu'il n'a pas compris, c'est certainement un problème de qualification. Vous pouvez vérifier que la 
+>_story_ et/ou l'_intention_ ont bien été créés en allant dans _Build_ > _Search Stories_.
 >
-> Si le bot vous répond qu'il n'a pas compris, c'est certainement un problème de qualification (du moment que la _story_
->et/ou l'_intention_ existent bien).
-
+> Vérifiez aussi que vous êtes sur la bonne application et la bonne lanque (au cas où vous en auriez créé plusieurs) 
+>pour faire le test : ils sont visibles en haut à droite de l'interface.
+>
+> Si malgré tout le bot répond qu'il ne comprend pas, peut-être n'avez-vous pas saisi exactement la phrase utilisée à 
+>la création de la _story_, et le bot ne fait pas encore le lien avec cette seconde phrase. Dans le paragraphe suivant, 
+>vous verrez comment améliorer la compréhension du bot en qualifiant plus de phrases utilisateur.
+>
+> Si vous obtenez un message d'erreur technique, il s'agit probablement d'une erreur de configuration du connecteur.
 
 ## Améliorer la compréhension
 
@@ -139,18 +145,19 @@ Le modèle conversationnel et la partie _NLU_ de Tock s'enrichissent progressive
 les algorithmes et donner des résultats de plus en plus pertinents.
 
 > Les premiers essais peuvent être décevants, mais souvent après quelques qualifications, voire une ou deux dizaines 
->de phrases qualifiées si besoin, votre bot vous comprendra déjà bien mieux.
+>de phrases qualifiées si besoin, votre bot vous comprend déjà bien mieux.
 
 * Allez dans _NLU_ > _Inbox_
 
 Vous voyez les phrases que vous avez saisies, et comment le bot les a interprêtées. Pour chacune s'affichent
-l'intention reconnue, la langue ainsi que le score (que donnent les algorithmes selon leur niveau de confiance sur cette phrase).
+l'intention reconnue, la langue ainsi que le score (que se donnent les algorithmes selon leur niveau de confiance sur cette phrase).
 
 * Choisissez quelques phrases, pour chacune sélectionnez la bonne intention puis _Validate_
 
 * Retournez dans _Test_ > _Test the bot_
 
-* Vérifiez que le bot comprend mieux ces phrases et d'autres similaires
+* Vérifiez que le bot comprend mieux ces phrases, et mêmes d'autres un peu différentes alors que vous ne les avez pas
+ qualifiées explicitement!
 
 
 ## Créer d'autres parcours (optionnel)
@@ -159,8 +166,8 @@ Pour aller un peu plus loin avec les _stories_ Tock, vous pouvez créer d'autres
 dans _Tock Studio_.
 
 Le bot vous répond alors selon l'intention déclenchée, sans autre forme de navigation que le fil que 
-vous donnez à la conversation. C'est la magie du conversationnel : soustraire l'utilisateur au carcan des liens et des menus
-imposés par les interfaces traditionnelles Web ou mobiles.
+vous donnez à la conversation. C'est la magie du conversationnel : le langage naturel est la seule navigation, et 
+l'utilisateur est soustrait aux liens et menus traditionnellement imposés par les interfaces Web ou mobiles.
 
 > Remarque : si vous preniez le temps de créer de très nombreuses _stories_, vous contasteriez peut-être 
 quelques effets indésirables propres au mode de fonctionnement des modèles et algorithmes _NLU_.
@@ -189,12 +196,14 @@ pour créer des parcours conversationnels simples sans écrire ni déployer de c
 
 Dans les sections suivantes vous apprendez à :
 
-* [Configurer le bot pour le canal Messenger](start-messenger.md) avec un compte Facebook
+* [Configurer le bot pour le canal Slack](start-slack.md) (requiert un compte Slack)
 
-* [Créer des parcours programmés en Kotlin](start-api.md), ouvrant la voie à des comportements plus complexes comme 
+* [Configurer le bot pour le canal Messenger](start-messenger.md) (requiert un compte Facebook)
+
+* [Créer des parcours programmés en Kotlin](start-api.md), ouvrant la voie à des comportements complexes et 
 l'intégration d'API tierces si besoin
 
-* [Déployer sa propre plateforme Tock](start-platform.md) en quelques minutes avec Docker
+* [Déployer une plateforme Tock](start-platform.md) en quelques minutes avec Docker
 
 Pour en savoir plus sur _Tock Studio_, les fonctionnalités et les modes de déploiement de Tock, vous pouvez aussi 
 parcourir le [manuel utilisateur](../user-manual/toc.md), plus complet.
