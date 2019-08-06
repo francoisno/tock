@@ -73,7 +73,7 @@ Créez un premier connecteur pour votre application :
  * _Create_
 
 > Notez qu'une _API Key_ a été automatiquement générée pour votre application à la création du premier connecteur. 
->Celle-ci vous servira à vous connecter à l'API du bot si vous essayez le mode WebHook ou WebSocket dans le guide 
+>Celle-ci vous servira à vous connecter à l'API du bot si vous essayez le mode _WebHook_ ou _WebSocket_ dans le guide 
 >_[Programmer des parcours](start-api.md)_.
 
 > Si vous cliquez sur _Display test configurations_, vous pouvez voir qu'une seconde configuration est créée. 
@@ -110,7 +110,7 @@ type de réponse, etc.
 * Terminez avec _Create Story_
 
 > Il est possible de répondre par plusieurs messages, ou des messages plus évolués comme des images, des liens, des 
->boutons d'_Action_ de manière à continuer le dialogue, etc. La section [Tock Studio](../user-manual/studio.md) du manuel
+>boutons d'_Action_ de manière à continuer le dialogue, etc. La section [Tock Studio](../user-manual/studio/studio.md) du manuel
 >utilisateur Tock vous en apprendra plus.
 
 

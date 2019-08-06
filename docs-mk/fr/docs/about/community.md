@@ -12,4 +12,4 @@ N'hésitez pas à nous contacter (créateurs et communauté Tock) directement su
 
 Vous pouvez aussi remonter une anomalie sur github :
 
-https://github.com/voyages-sncf-technologies/tock/issues
+[https://github.com/voyages-sncf-technologies/tock/issues](https://github.com/voyages-sncf-technologies/tock/issues)

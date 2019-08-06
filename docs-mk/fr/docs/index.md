@@ -56,11 +56,3 @@ Il est possible d'en créer facilement d'autres, que ce soit pour se connecter �
 
 ### Suivi des conversations
 Enfin une interface d'administration est mise à disposition et permet de tester les bots et de suivre les conversations des utilisateurs. 
-
-
-## Plateforme de démonstration
-
-Une plateforme de démonstration est [disponible](https://demotock-production-admin.vsct-prod.aws.vsct.fr). 
-Pour vous authentifier, un compte github est nécessaire. 
-Cette plateforme vous permet de découvrir les différents aspects de Tock. 
-Elle n'a pas vocation a être utilisée pour une application en production.

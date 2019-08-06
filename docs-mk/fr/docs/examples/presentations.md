@@ -9,9 +9,13 @@ Cela peut donner un aperçu de la solution en complément des [guides](../gettin
 
 ## Conférences / video
 
-* _[Développer un bot sur Messenger et Google Assistant en 30 minutes](https://www.youtube.com/watch?v=K4q8ZHw9TuI)_ @ _Devoxx France_ 2018 (live coding 30 min)
+* _[Développer un bot sur Messenger et Google Assistant en 30 minutes](https://www.youtube.com/watch?v=K4q8ZHw9TuI)_ 
+@ _Devoxx France_ **2018** (live coding _"tools in action"_ 30 min)
 
-## Supports de présentations
+## Supports de présentation / meetup
 
-* _[Tock - The Open Conversation Kit]()_ @ _Meetup Open Transport_ 2019
-* _[Tock]()_ @ _Meetup CRiP OpenSource_ 2017
+* [Tock - _The Open Conversation Kit_](https://fr.slideshare.net/FrancoisN0/tock-the-open-conversation-kit-meetup-open-transport-161569957)
+ @ _Meetup Open Transport_ **(2019)**
+
+* [Tock - _The Open Conversation Kit_](https://fr.slideshare.net/FrancoisN0/tock-the-open-conversation-kit-crip-open-source)
+ @ _CRiP OpenSource & Co-développement_ **(2017)**

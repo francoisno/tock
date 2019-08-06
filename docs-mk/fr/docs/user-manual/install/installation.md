@@ -49,15 +49,15 @@ Un exemple de configuration de cette dernière image se trouve dans le fichier
 
 - Pour une stack uniquement NLU :
 
-![Schéma NLU](img/nlp_api.png "Schéma NLU")
+![Schéma NLU](../../img/nlp_api.png "Schéma NLU")
 
 - Pour une stack exposant l'API BOT :
 
-![BOT API](img/bot_api.png "BOT API")
+![BOT API](../../img/bot_api.png "BOT API")
 
 - Pour une stack intégrant un Bot Tock :
 
-![Bot TOCK](img/bot_open_data.png "Bot Tock")
+![Bot TOCK](../../img/bot_open_data.png "Bot Tock")
 
 ## Recommandations
  

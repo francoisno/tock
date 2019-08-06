@@ -130,6 +130,8 @@ la dépendance `tock-bot-api-websocket` incluse :
 </project>
 ```
 
+> Vous pouvez retrouver ce code (et d'autres exemples) dans le dépôt [tock-bot-samples]().
+
 ## Créer une fonction qui se connecte à Tock
 
 * Créez un fichier Kotlin (par exemple dans `src/main/kotlin/StartWebSocket.kt)
@@ -143,15 +145,18 @@ import fr.vsct.tock.bot.api.websocket.startWithDemo
 
 fun main() {
     startWithDemo( // Integrate with the Tock demo platform by default
-            newBot(
-                    "PUT-YOUR-TOCK-APP-API-KEY-HERE", // Get your app API key from Bot Configurations in Tock Studio
-                    newStory("qui-es-tu") { // Answer for the 'qui-es-tu' story
-                        send("Je suis un assistant conversationnel construit avec Tock")
-                        end("Comment puis-je aider ?")
-                    }
-            ))
+        newBot(
+            "PUT-YOUR-TOCK-APP-API-KEY-HERE", // Get your app API key from Bot Configurations in Tock Studio
+            newStory("qui-es-tu") { // Answer for the 'qui-es-tu' story
+                send("Je suis un assistant conversationnel construit avec Tock")
+                end("Comment puis-je aider ?")
+            }
+        )
+    )
 }
 ```
+
+> Vous pouvez retrouver ce code (et d'autres exemples) dans le dépôt [tock-bot-samples]().
 
 * Remplacez la clef d'API par celle de votre propre application Tock. Pour cela, dans _Tock Studio_, 
 allez dans _Configuration_ > _Bot Configurations_ et reportez la valeur _API Key_ dans le code.
@@ -174,7 +179,7 @@ de log ressemblant à celle-ci :
 déclarer programmatiquement
 
 * Allez dans _Test_ > _Test the bot_ et saisissez une ou plusieurs phrases comme "qui es-tu ?" par exemple.
-VOus contastez que le bot ne répond pas encore à cette question - il répond peut-être même à une autre 
+Vous contastez que le bot ne répond pas encore à cette question - il répond peut-être même à une autre 
 intention. Il reste en effet une configuration à effectuer pour que la _qualification_ fonctionne.
 
 A ce stade, le parcours existe bien dans Tock, mais l'_intention_ n'a pas été créée automatiquement.

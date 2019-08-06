@@ -14,7 +14,7 @@ Sept onglets sont disponibles :
 
 L'utilisateur est redirigé par défaut sur la catégorie *Inbox*.
 
-![schéma Tock](img/inbox.png "Aucune phrase à qualifier")
+![schéma Tock](../../img/inbox.png "Aucune phrase à qualifier")
 
 ## Ajouter et qualifier des phrases
 
@@ -23,18 +23,18 @@ L'utilisateur est redirigé par défaut sur la catégorie *Inbox*.
 Cliquez sur le menu **Try It** puis indiquez votre phrase.
 Il faut lui attribuer une intention en sélectionnant "Create a New Intent" dans le liste de sélection "Intent".
 
-![schéma Tock](img/try-it-1.png "Création d'une nouvelle intention")
+![schéma Tock](../../img/try-it-1.png "Création d'une nouvelle intention")
  
 ### Spécifier des entités
  
 Si nécessaire, vous pouvez ensuite spécifier les entités que vous souhaitez que votre modèle reconnaisse pour cette intention,
 en sélectionnant les portions de phrases correspondantes à ces entités, puis en cliquant sur le bouton "Add New Entity" qui vient d'apparaître
 
-![schéma Tock](img/try-it-2.png "Sélection d'une entité")
+![schéma Tock](../../img/try-it-2.png "Sélection d'une entité")
  
 A vous de choisir ensuite un type d'entité existant, ou d'en créer un nouveau, puis de donner un role à cette entité.
 
-![schéma Tock](img/try-it-3.png "Ajout d'une entité - étape 1")
+![schéma Tock](../../img/try-it-3.png "Ajout d'une entité - étape 1")
 
 ### Types d'entités prédéfinies
 
@@ -46,7 +46,7 @@ spécifiez dans au moins une phrase de cette intention.
 
 Il est bien sûr possible d'avoir plusieurs occurrences du même role, ou d'un rôle différent dans la même phrase.
 
-![schéma Tock](img/try-it-4.png "Sélection de plusieurs entités")
+![schéma Tock](../../img/try-it-4.png "Sélection de plusieurs entités")
 
 ### Valider la phrase
 
@@ -54,7 +54,7 @@ Terminez la qualification de la phrase en cliquant sur le bouton "Validate".
 Au bout de 2 phrases qualifiées pour une intention donnée, il est possible que le 3ème phrase ajoutée soit immédiatement
 reconnue.
 
-![schéma Tock](img/try-it-5.png "Détection d'une phrase")
+![schéma Tock](../../img/try-it-5.png "Détection d'une phrase")
 
 Si elle est qualifiée correctement, vous n'avez plus qu'à cliquer sur "Validate" pour confirmer que la phrase est correcte.
 Si ce n'est pas le cas, à vous d'en corriger le sens avant de la valider.
@@ -68,7 +68,7 @@ Vous êtes en train de construire votre premier modèle !
 L'onglet **Search** permet de parcourir l'ensemble des phrases du modèle en utilisant un certain nombre de critères.
 Le plus utilisé est la recherche texte simple pour lequel il est également possible d'utiliser des expressions régulières.
 
-![schéma Tock](img/search.png "Recherche d'une phrase")
+![schéma Tock](../../img/search.png "Recherche d'une phrase")
 
 Cela permet de consulter les phrases faisant partie de votre modèle,
 et vous donne la possibilité de faire évoluer les qualifications de ces phrases au cours du temps.
@@ -85,7 +85,7 @@ Chaque phrase à un état ("Status") qui peut évoluer au cours du temps.
 
 En cliquant sur le menu "Applications", vous accédez à la liste des applications disponibles.
 
-![schéma Tock](img/applications.png "Liste des applications")
+![schéma Tock](../../img/applications.png "Liste des applications")
 
 En cliquant sur le bouton de modification, plusieurs options sont disponibles.
 
@@ -95,7 +95,7 @@ Vous avez la possibilité de sélectionner la librairie NLP utilisée par cette 
 
 ### Utilisation des modèles d'entités
 
-![schéma Tock](img/application.png "Configuration de l'application")
+![schéma Tock](../../img/application.png "Configuration de l'application")
 
 Cette option permet de réutiliser des modèles d'entités pré-construits dans vos nouvelles intentions. 
 Par exemple, si vous créez une intention avec une entité **duckling:datetime**, les dates seront automatiquement
@@ -109,7 +109,7 @@ la détection native sera supérieure dans quasiment tous les cas à celle des m
 
 Si vous activez cette option, vous allez être en mesure de qualifier plusieurs niveaux d'entités :
 
-![schéma Tock](img/subentities.png "Support des sous-entités")
+![schéma Tock](../../img/subentities.png "Support des sous-entités")
 
 Le nombre de niveaux n'est pas limité, mais il est conseillé de ne pas en spécifier plus de 3 ou 4.
 
@@ -118,6 +118,6 @@ Le nombre de niveaux n'est pas limité, mais il est conseillé de ne pas en spé
 Une entité donnée peut avoir des valeurs prédéfinies : pour cela vous devez aller dans l'onglet "Entities", selectionner une entité appartenant à l'organization courante.
 Une petite icône a coté de l'icône de suppression montre les types d'entités que vous pourrez modifier comme le montre l'image ci-dessous.
 
-![schéma Tock](img/predefined-values.png "Support des sous-entités")
+![schéma Tock](../../img/predefined-values.png "Support des sous-entités")
 
 Dans l'exemple ci-dessus nous avons deux labels définis pour la valeur de semaine : "Semaine" et "hebdomadaire".

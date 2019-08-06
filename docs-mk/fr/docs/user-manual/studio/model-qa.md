@@ -1,18 +1,5 @@
 # Evaluer la pertinence du modèle NLP
 
-## Données disponibles
-
-Cinq onglets permettent de contrôler la pertinence du modèle :
-
-1. **Stats** : statistiques minimales qui permettent de suivre la qualité du modèle en production. Elles comprennent:
-    * l'auto-évaluation du modèle sur sa pertinence en terme de reconnaissance d'intention et d'entités
-    * le nombre d'appels et le nombre d'erreurs
-    * le temps moyen d'exécution 
-2. **Test Trend** : évolution de la pertinence des [tests partiels de modèle](#tests-partiels-de-modele) 
-3. **Intent Errors** : la liste des erreurs d'intention (vraies ou fausses) trouvées lors des tests partiels de modèle
-4. **Entity Errors** : la liste des erreurs d'entité (vraies ou fausses) trouvées lors des tests partiels de modèle
-5. **Model Builds** : la liste des constructions des modèles avec notamment le type de modèle, le nombre de phrases et la durée de construction
-
 ## Tests partiels de modèle
 
 Les tests partiels de modèle constituent un moyen classique de détecter les erreurs de qualification,
@@ -35,7 +22,7 @@ Il est possible de configurer ce comportement avec la propriété *tock_test_mod
 
 C'est l'objet de l'onglet **Intent Errors**. Voici par exemple une copie d'écran pour le modèle bot open-data.
 
-![schéma Tock](img/intent-errors.png "Erreur d'intentions détectées")
+![schéma Tock](../../img/intent-errors.png "Erreur d'intentions détectées")
 
 Comme il s'agit d'un modèle d'exemple, aucune *vraie* erreur n'a été détectée. 
 On peut tout de même constater que dans certains cas le modèle se trompe systématiquement avec une probabilité élevée.
@@ -47,4 +34,4 @@ ou de corriger l'éventuelle erreur détectée (*Change The Intent*).
 
 Elles sont consultables de manière symétrique via l'onglet **Entity Errors**. 
 
-![schéma Tock](img/entity-errors.png "Erreur d'entités détectées")
+![schéma Tock](../../img/entity-errors.png "Erreur d'entités détectées")

@@ -1,5 +1,9 @@
 # Contribuer à Tock
 
+Le projet Tock est ouvert à la contribution et toute proposition est la bienvenue !
+
+Cette page donne des indications sur la structure et les conventions du code de la plateforme.
+
 ## Principales technologies
 
 La plateforme applicative est la [JVM](https://fr.wikipedia.org/wiki/Machine_virtuelle_Java).
@@ -25,7 +29,10 @@ de la plateforme sous [licence Apache 2](https://github.com/voyages-sncf-technol
 sous licence [GPL](https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU). 
 
 * [tock-docker](https://github.com/voyages-sncf-technologies/tock-docker) : des images [Docker](https://www.docker.com/) 
-et Docker Compose, pour faciliter la prise en main et le déploiement de la plateforme dans différentes configurations.
+et [Docker Compose](https://docs.docker.com/compose/), pour faciliter la prise en main et le déploiement de la plateforme dans différentes configurations.
+
+* [tock-bot-samples]() : des exemples de code notamment pour programmer des parcours en mode _WebHook_ ou _WebSocket_ 
+comme dans les [guides Tock](../getting-started/start-api.md).
  
 * [tock-bot-open-data](https://github.com/voyages-sncf-technologies/tock-bot-open-data) : un exemple de bot basé 
 sur les [API _Open Data_ de la SNCF](https://www.digital.sncf.com/startup/api), implémentant également des bases pour 
