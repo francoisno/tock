@@ -12,4 +12,5 @@
     * Teams
     * Business Chat / Messages
     * Twitter
-    * REST
+    * Web
+    * Test

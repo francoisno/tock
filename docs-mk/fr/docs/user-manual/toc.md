@@ -1,30 +1,37 @@
 # Manuel utilisateur Tock
 
-* Concepts
+* [Table des matières]()
 
-* _Tock Studio_ :
-    * La section _Configuration_
-    * La section _NLU_
-    * La section _NLU QA_
-    * La section _Build_
-    * La section _Test_
-    * La section _Monitoring_
+* [Concepts](concepts.md)
 
-* _Tock Bot API_ :
-    * Architectures
-    * Le mode _WebSocket_
-    * Le mode _WebHook_
-    * Utiliser l'API
+* [Interfaces _Tock Studio_](studio.md) :
+    * Ecrans et vues _Tock Studio_ :
+        * [Interface générale](studio/general.md)
+        * [Le menu _Configuration_](studio/configuration.md)
+        * [Le menu _NLU_](studio/nlu.md)
+        * [Le menu _NLU QA_](studio/nlu-qa.md)
+        * [Le menu _Build_](studio/build.md)
+        * [Le menu _Test_](studio/test.md)
+        * [Le menu _Monitoring_](studio/monitoring.md)
+    * Zooms :
+        * [Construire les modèles conversationnels](studio/build-model.md)
+        * [Qualifier et suivre la performance des modèles](studio/model-qa.md)
 
-* _Tock Bot Framework_ :
-    * Conception
-    * Le _bus_ Tock
-    * Les types de _Message_
-    * _StoryHandler_ & _StoryDef_
-    * _NlpListener_
-    * ...
+* [Développement](dev.md) :
+    * [_Tock Bot API_](dev/bot-api.md) :
+        * Architectures
+        * Mode _WebSocket_
+        * Mode _WebHook_
+        * Utiliser l'API
+    * [_Tock Bot Framework_](dev/bot-framework.md) :
+        * Conception
+        * Le _bus_ Tock
+        * Les types de _Message_
+        * _StoryHandler_ & _StoryDef_
+        * _NlpListener_
+        * ...
 
-* Les connecteurs :
+* [Les _connecteurs_](connectors.md) :
     * Qu'est-ce qu'un _connecteur_ Tock
     * Messenger
     * Slack
@@ -35,12 +42,14 @@
     * Teams
     * Business Chat / Messages
     * Twitter
-    * REST
+    * Web
+    * Test
+
+* [Créer un bot multilingue / Internationalisation](i18n.md)
     
-* Installation :
-    * Architecture
+* [Installation](install.md) :
+    * [Architecture](install/architecture.md)
     * Déployer une plateforme
     * Déployer un bot
     * Supervision
     * Cloud, charge et disponibilité
-    

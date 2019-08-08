@@ -13,22 +13,24 @@ nav:
       - 'Configurer Messenger': 'getting-started/start-messenger.md'
       - 'Programmer des parcours': 'getting-started/start-api.md'
       - 'Déployer avec Docker': 'getting-started/start-platform.md'
-  - 'Utiliser Tock (manuel)': # Manuel utilisateur / Apprendre
+  - 'Utiliser Tock (manuel)':
       - 'Table des matières': 'user-manual/toc.md'
       - 'Concepts': 'user-manual/concepts.md'
       - 'Tock Studio': 'user-manual/studio.md'
       - 'Tock Bot API': 'user-manual/bot-api.md'
       - 'Tock Bot Framework': 'user-manual/bot-framework.md'
-      - 'Les connecteurs': 'connectors/toc.md'
-      - 'Installation': 'install/toc.md'
-  - 'Exemples': # 'guides.md'
-      - 'Etude de cas': 'examples/users.md'
+      - 'Les connecteurs': 'user-manual/connectors.md'
+      - 'Multilingue / i18n': 'user-manual/i18n.md'
+      - 'Installation': 'user-manual/install.md'
+  - 'Exemples':
+      - 'Usages & utilisateurs': 'examples/users.md'
       - 'Présentations': 'examples/presentations.md'
       - 'Exemples de code': 'examples/samples.md'
-  - 'A propos': # 'about.md' # Nous contacter / Contribuer / Remerciements
-      - 'Nous contacter': 'about/community.md' # Nous contacter / Contribuer / Remerciements
-      - 'Remerciements': 'about/acknowledgments.md' # Nous contacter / Contribuer / Remerciements
-      - 'Contribuer': 'about/contribute.md' # Nous contacter / Contribuer / Remerciements
+  - 'A propos':
+      - 'Nous contacter': 'about/community.md'
+      - 'Contribuer': 'about/contribute.md'
+      - 'Emploi': 'about/jobs.md'
+      - 'Remerciements': 'about/acknowledgments.md'
 
 
 #    - 'Pour commencer': 'pour-commencer.md'
