@@ -43,10 +43,10 @@ fournies, vous pouvez retrouver cette documentation en ligne à l'adresse [http:
 
 ### _Tock Bot API_
 
-L'API permettant de développer des bots Tock avec n'importe quel langage. Elle est aussi utilisée pour développer en modes 
-_WebHook_ et _WebSocket_ en Kotlin, comme décrit dans la [documentation développeur](bot-api.md)) est encore en développement (béta).
+Cette API permet de développer des bots Tock avec n'importe quel langage. Elle est utilisée par les clients Kotlin en 
+modes _WebHook_ et _WebSocket_.
 
-Une documentation arrivera bientôt.
+> L'API est toutefois encore en développement (béta) et sa documentation arrivera bientôt.
 
 ## Développer en mode _Bot API_ en Kotlin
 
@@ -132,13 +132,13 @@ fun main() {
         newBot(
             "PUT-YOUR-TOCK-APP-API-KEY-HERE", // Get your app API key from Bot Configurations in Tock Studio
              newStory("greetings") { // Intent 'greetings'
-                 end("Hello!") // Raw text answer
+                 end("Bonjour!") // Raw text answer
              },
              newStory("location") { // Intent 'location'
                  end(
                      newCard(
-                         "The title",
-                         "A subtitle",
+                         "Le titre de la carte",
+                         "Un sous-titre",
                          newAttachment("https://url-image.png"),
                          newAction("Action 1"),
                          newAction("Action 2", "http://redirection") // Anwser with a card - including text, image and actions
@@ -148,11 +148,11 @@ fun main() {
              newStory("goodbye") { // Intent 'goodbye'
                  end {
                      // Answer with Messenger-specific button/quick reply
-                     buttonsTemplate("Are you sure you want to leave?", nlpQuickReply("Stay"))
+                     buttonsTemplate("Etes-vous sûr(e) de vouloir partir ?", nlpQuickReply("Je reste"))
                  } 
              },
              unknownStory {
-                 end("I don't understand :(") // Default answer
+                 end("Je n'ai pas compris. Mais j'apprends tous les jours :)") // Default answer
              }
         ),
         "http://localhost:8080" // Local platform URL (default host/port)

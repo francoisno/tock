@@ -35,6 +35,10 @@ des canaux grand public.
 
 ### Messenger
 
+<img alt="Logo Messenger" 
+src="https://cdn.iconscout.com/icon/free/png-256/facebook-messenger-2-569346.png" 
+style="width: 100px;">
+
 * **Canal** : [Facebook Messenger](https://www.messenger.com/)
 * **Type** : texte _(+ voix via l'upload de messages vocaux)_
 * **Status** : connecteur Tock utilisé en production depuis 2016
@@ -47,6 +51,10 @@ Pour en savoir plus sur ce connecteur, vous pouvez aussi vous rendre dans le dos
 où vous retrouverez les sources et le _README_ du connecteur.
 
 ### Slack
+
+<img alt="Logo Slack" 
+src="https://www.macupdate.com/images/icons256/50617.png" 
+style="width: 100px;">
 
 * **Canal** : [Slack](https://slack.com/)
 * **Type** : texte
@@ -61,6 +69,10 @@ où vous retrouverez les sources et le _README_ du connecteur.
 
 ### Google Assistant / Google Home
 
+<img alt="Logo Google Assistant" 
+src="https://res-5.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_120,w_120,f_auto,b_white,q_auto:eco/g0oshbe7blfnsrylchxd" 
+style="width: 100px;">
+
 * **Canal** : [Google Assistant](https://assistant.google.com/) / [Google Home](https://store.google.com/fr/product/google_home)
 * **Type** : texte + voix
 * **Status** : connecteur Tock utilisé en production depuis 2017
@@ -70,7 +82,11 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 
 ### Alexa / Echo
 
-* **Canal** : [Alexa](https://alexa.amazon.com/)
+<img alt="Logo Alexa" 
+src="https://cdn.wezift.com/assets/apps/amazon-alexa/logo/_imgSingle/9ec0bc97e359276643553d8c33e49872.png?mtime=20171201192101" 
+style="width: 100px;">
+
+* **Canal** : [Amazon Alexa](https://alexa.amazon.com/)
 * **Type** : voix
 * **Status** : connecteur Tock utilisé en production depuis 2018
 
@@ -82,6 +98,10 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 
 ### Rocket.Chat
 
+<img alt="Logo RocketChat" 
+src="https://dl2.macupdate.com/images/icons256/58493.png?d=1565347347" 
+style="width: 100px;">
+
 * **Canal** : [Rocket.Chat](https://rocket.chat/)
 * **Type** : texte
 * **Status** : à préciser
@@ -91,7 +111,11 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 
 ### WhatsApp
 
-* **Canal** : [WhatsApp](https://www.whatsapp.com/)
+<img alt="Logo WhatsApp" 
+src="https://appradarcentral.com/wp-content/uploads/2017/07/WhatsApp-Messenger.png" 
+style="width: 100px;">
+
+* **Canal** : [WhatsApp from Facebook](https://www.whatsapp.com/)
 * **Type** : texte
 * **Status** : connecteur Tock utilisé en production depuis 2019
 
@@ -100,7 +124,11 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 
 ### Teams
 
-* **Canal** : [Teams](https://products.office.com/fr-fr/microsoft-teams/)
+<img alt="Logo Teams" 
+src="https://cdn.worldvectorlogo.com/logos/microsoft-teams.svg" 
+style="width: 100px;">
+
+* **Canal** : [Microsoft Teams](https://products.office.com/fr-fr/microsoft-teams/)
 * **Type** : texte + voix
 * **Status** : connecteur Tock utilisé en production depuis 2019
 
@@ -109,7 +137,11 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 
 ### Business Chat / Messages
 
-* **Canal** : [Business Chat](https://www.apple.com/fr/ios/business-chat/)
+<img alt="Logo BusinessChat" 
+src="http://cdn.osxdaily.com/wp-content/uploads/2014/11/Messages-icon-300x300.png" 
+style="width: 100px;">
+
+* **Canal** : [Apple Business Chat (Messages)](https://www.apple.com/fr/ios/business-chat/)
 * **Type** : texte
 * **Status** : connecteur Tock utilisé en production depuis 2019
 
@@ -117,6 +149,10 @@ Pour en savoir plus sur ce connecteur, voir ses sources et son _README_ dans le 
 [connector-businesschat](https://github.com/voyages-sncf-technologies/tock/tree/master/bot/connector-businesschat) sur github.
 
 ### Twitter
+
+<img alt="Logo Twitter" 
+src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/112/2016/06/twitter-logo.jpg" 
+style="width: 100px;">
 
 * **Canal** : [Twitter](https://twitter.com/) (messages privés)
 * **Type** : texte
