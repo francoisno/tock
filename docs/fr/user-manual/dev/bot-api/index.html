@@ -854,9 +854,11 @@ fournies, vous pouvez retrouver cette documentation en ligne à l'adresse <a hre
 <p>Si vous avez déployé une plateforme Tock en local avec les <a href="https://github.com/voyages-sncf-technologies/tock-docker">images docker</a> 
 fournies, vous pouvez retrouver cette documentation en ligne à l'adresse <a href="http://localhost/doc/admin.html">http://localhost/doc/admin.html</a>.</p>
 <h3 id="tock-bot-api_1"><em>Tock Bot API</em><a class="headerlink" href="#tock-bot-api_1" title="Permanent link">&para;</a></h3>
-<p>L'API permettant de développer des bots Tock avec n'importe quel langage. Elle est aussi utilisée pour développer en modes 
-<em>WebHook</em> et <em>WebSocket</em> en Kotlin, comme décrit dans la <a href="./">documentation développeur</a>) est encore en développement (béta).</p>
-<p>Une documentation arrivera bientôt.</p>
+<p>Cette API permet de développer des bots Tock avec n'importe quel langage. Elle est utilisée par les clients Kotlin en 
+modes <em>WebHook</em> et <em>WebSocket</em>.</p>
+<blockquote>
+<p>L'API est toutefois encore en développement (béta) et sa documentation arrivera bientôt.</p>
+</blockquote>
 <h2 id="developper-en-mode-bot-api-en-kotlin">Développer en mode <em>Bot API</em> en Kotlin<a class="headerlink" href="#developper-en-mode-bot-api-en-kotlin" title="Permanent link">&para;</a></h2>
 <h3 id="pre-requis-architecture">Pré-requis / Architecture<a class="headerlink" href="#pre-requis-architecture" title="Permanent link">&para;</a></h3>
 <p>Pour utiliser le mode <em>Bot API</em> de Tock, un module spécifique doit être déployé avec la plateforme. Généralement appelé 
@@ -923,13 +925,13 @@ la clé d'API du bot auquel vous souhaitez vous connecter.</p>
         <span class="n">newBot</span><span class="p">(</span>
             <span class="s">&quot;PUT-YOUR-TOCK-APP-API-KEY-HERE&quot;</span><span class="p">,</span> <span class="c1">// Get your app API key from Bot Configurations in Tock Studio</span>
              <span class="n">newStory</span><span class="p">(</span><span class="s">&quot;greetings&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Intent &#39;greetings&#39;</span>
-                 <span class="n">end</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span> <span class="c1">// Raw text answer</span>
+                 <span class="n">end</span><span class="p">(</span><span class="s">&quot;Bonjour!&quot;</span><span class="p">)</span> <span class="c1">// Raw text answer</span>
              <span class="p">},</span>
              <span class="n">newStory</span><span class="p">(</span><span class="s">&quot;location&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Intent &#39;location&#39;</span>
                  <span class="n">end</span><span class="p">(</span>
                      <span class="n">newCard</span><span class="p">(</span>
-                         <span class="s">&quot;The title&quot;</span><span class="p">,</span>
-                         <span class="s">&quot;A subtitle&quot;</span><span class="p">,</span>
+                         <span class="s">&quot;Le titre de la carte&quot;</span><span class="p">,</span>
+                         <span class="s">&quot;Un sous-titre&quot;</span><span class="p">,</span>
                          <span class="n">newAttachment</span><span class="p">(</span><span class="s">&quot;https://url-image.png&quot;</span><span class="p">),</span>
                          <span class="n">newAction</span><span class="p">(</span><span class="s">&quot;Action 1&quot;</span><span class="p">),</span>
                          <span class="n">newAction</span><span class="p">(</span><span class="s">&quot;Action 2&quot;</span><span class="p">,</span> <span class="s">&quot;http://redirection&quot;</span><span class="p">)</span> <span class="c1">// Anwser with a card - including text, image and actions</span>
@@ -939,11 +941,11 @@ la clé d'API du bot auquel vous souhaitez vous connecter.</p>
              <span class="n">newStory</span><span class="p">(</span><span class="s">&quot;goodbye&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Intent &#39;goodbye&#39;</span>
                  <span class="n">end</span> <span class="p">{</span>
                      <span class="c1">// Answer with Messenger-specific button/quick reply</span>
-                     <span class="n">buttonsTemplate</span><span class="p">(</span><span class="s">&quot;Are you sure you want to leave?&quot;</span><span class="p">,</span> <span class="n">nlpQuickReply</span><span class="p">(</span><span class="s">&quot;Stay&quot;</span><span class="p">))</span>
+                     <span class="n">buttonsTemplate</span><span class="p">(</span><span class="s">&quot;Etes-vous sûr(e) de vouloir partir ?&quot;</span><span class="p">,</span> <span class="n">nlpQuickReply</span><span class="p">(</span><span class="s">&quot;Je reste&quot;</span><span class="p">))</span>
                  <span class="p">}</span> 
              <span class="p">},</span>
              <span class="n">unknownStory</span> <span class="p">{</span>
-                 <span class="n">end</span><span class="p">(</span><span class="s">&quot;I don&#39;t understand :(&quot;</span><span class="p">)</span> <span class="c1">// Default answer</span>
+                 <span class="n">end</span><span class="p">(</span><span class="s">&quot;Je n&#39;ai pas compris. Mais j&#39;apprends tous les jours :)&quot;</span><span class="p">)</span> <span class="c1">// Default answer</span>
              <span class="p">}</span>
         <span class="p">),</span>
         <span class="s">&quot;http://localhost:8080&quot;</span> <span class="c1">// Local platform URL (default host/port)</span>
