@@ -25,6 +25,9 @@ Un tableau propose également des équivalences et termes similaires dans d'autr
 
 ### _Parcours_ (ou _stories_)
 
+Un parcours ou _story_ est un regroupement fonctionnel qui correspond à une intention principale et, de manière optionelle,
+à une ou plusieurs intentions dites "secondaires".
+
 > TODO
 
 ### _Connecteur_
@@ -58,3 +61,7 @@ solutions conversationnelles :
 
 > La documentation des [connecteurs Tock](connectors/toc.md) donne également la correspondance avec d'autres termes propres à 
 >tel ou tel canal.
+
+## Continuer...
+
+Vous pouvez maintenant entamer le chapitre suivant : [Interfaces _Tock Studio_](studio.md). 

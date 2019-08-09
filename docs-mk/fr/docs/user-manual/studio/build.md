@@ -10,10 +10,10 @@ de parcours ou [Construire un bot multilingue](../i18n.md) pour l'utilisation de
 
 ### Créer une réponse simple
 
-Le guide [Créer son premier bot avec Tock Studio](../../getting-started/start-studio.md) présente 
+> Le guide [Créer son premier bot avec Tock Studio](../../getting-started/start-studio.md) présente 
  un exemple de création de parcours avec une réponse simple via _New Story_.
- 
-L'onglet _Test_ > _Test the bot_ permet ensuite de rapidement vérifier le comportement du bot sur ce parcours.
+>
+> L'onglet _Test_ > _Test the bot_ permet ensuite de rapidement vérifier le comportement du bot sur ce parcours.
 
 ![Test_de_la_réponse dédiée](../../img/build-2.png "Test de la réponse dédiée")
 

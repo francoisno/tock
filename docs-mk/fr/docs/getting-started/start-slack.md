@@ -10,7 +10,9 @@ ou passer directement à [la suite](start-api.md).
  
 ## Ce que vous allez créer
 
-* Une configuration (dans Slack et dans Tock) pour recevoir et envoyer des messages sur une _chaîne_ Slack
+* Une configuration (dans Slack et dans Tock) pour recevoir et envoyer des messages Slack
+
+* Un bot qui parle sur une _chaîne_ Slack
 
 ## Pré-requis
 
@@ -18,7 +20,7 @@ ou passer directement à [la suite](start-api.md).
 
 * Un bot Tock fonctionnel (par exemple suite au guide [premier bot Tock](start-studio.md))
 
-* Un compte Slack et un _espace de travail_ où intégrer le bot
+* Un compte Slack et un _espace de travail_ / une _chaîne_ où intégrer le bot
 
 > Si vous n'avez jamais utilisé Slack, rendez-vous sur sur [https://slack.com/](https://slack.com/)
 

@@ -72,7 +72,7 @@ Il vous faut, en plus de [Docker](https://www.docker.com/) et [Docker Compose](h
   soit un client [Git](https://git-scm.com/) pour récupérer les sources (commande `git clone`) soit avoir déjà copié 
   les sources de github en local.
  
-> Pour démarrer sans Git ni les sources du dépôt Tock Docker en local, utilisez la méthode au 
+> Pour démarrer sans Git ni les sources du dépôt en local, suivez le 
 [paragraphe précédent](#deployer-une-plateforme-tock-sans-les-sources).
 
 ```shell
@@ -86,15 +86,17 @@ $ docker-compose -f docker-compose-bot.yml up
 ```
 ## Accéder à _Tock Studio_
 
-Une fois la plateforme démarrée, les interfaces _Tock Studio_ sont disponibles par défaut sur le port `80` : 
-[http://localhost](http://localhost)
+Une fois la plateforme prête, les interfaces _Tock Studio_ sont sur le port `80` par défaut :
+ 
+* Allez sur [http://localhost](http://localhost)
 
 > Après le déploiement de la plateforme, celle-ci s'initialise, et il peut falloir attendre quelques secondes 
 >avant que les interfaces _Tock Studio_ soient accessibles.
 
-Pour se connecter, l'identifiant par défaut est `admin@app.com` et le mot de passe `password`.
+* Connectez-vous avec les identifiants `admin@app.com` / `password` par défaut
 
-> Vous pourrez/devrez évidemment changer ces valeurs par défaut à l'installation d'une plateforme pour utilisation pérenne. 
+> Il est évidemment recommandé de changer ces valeurs à l'installation d'une plateforme destinée à une utilisation pérenne
+>(production, plateforme partagée entre équipes, etc.). 
 
 ## Créer une application, un connecteur et une intention
 

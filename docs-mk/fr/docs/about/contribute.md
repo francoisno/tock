@@ -40,11 +40,11 @@ l'internationalisation avec deux langues proposées.
 
 ### Le dépôt tock
 
-> TODO
+> TODO : détailler les modules et la structure du repo
 
 ### Le dépôt tock-docker
 
-> TODO
+> TODO : détailler les modules et la structure du repo, le fonctionnement des builds Maven et Docker, etc.
 
 ## Construire Tock à partir des sources
 
@@ -78,6 +78,15 @@ Enfin pour lancer les interfaces d'administration, vous aurez besoin de lancer l
 
 - [Pour l'administration complète (Bot + NLP)](https://github.com/voyages-sncf-technologies/tock/blob/master/bot/admin/web/README.md)
 - [Pour l'administration NLP uniquement](https://github.com/voyages-sncf-technologies/tock/blob/master/nlp/admin/web/README.md)
+
+## Construire les images Docker
+
+Les images Docker de Tock peuvent être reconstruites à partir des sources du dépôt [tock-docker](https://github.com/voyages-sncf-technologies/tock-docker).
+Pour cela, utilisez [Maven](https://maven.apache.org/) qui déclenchera le build [Docker](https://www.docker.com/) :
+
+`$ mvn docker:build`
+
+Vous pouvez ensuite instancier ces images via Docker ou les stacks Docker Compose avec les descripteurs à la racine du dépôt.
 
 ## Conventions
 

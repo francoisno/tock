@@ -16,10 +16,27 @@ interprète la phrase). S'affichent alors :
 
 * _Intent_ : l'intention reconnue
 * _Language_ : la langue détectée
-* Le(s) score(s) retourné(s) par les algorithmes selon leur niveau de confiance sur l'intention et 
-sur les éventuelles entités.
+* Le(s) score(s) retourné(s) par les algorithmes (selon leur niveau de confiance sur l'intention et 
+sur les éventuelles entités)
+* Le cas échéant, chaque entité détectée avec son rôle/type et son score
 
-Les boutons et commandes suivantes sont disponibles :
+![Interface d'admin NLP - qualification de phrase](../../img/tock-nlp-admin.png "Exemple de qualification de phrase")
+
+Il est possible de modifier tous les éléments détectés depuis cet écran :
+
+* Pour modifier l'intention (voire en créer une nouvelle à la volée) ou la langue détectées, utilisez les champs / 
+listes de sélection sous la phrase 
+* Pour supprimer une entité, utilisez le bouton à côté du score de l'entité
+* Pour ajouter une entité, sélectionnez avec la souris un bloc de mots dansla phrase puis précisez son rôle/type.
+
+![schéma Tock](../../img/try-it-2.png "Sélection d'une entité")
+
+![schéma Tock](../../img/try-it-3.png "Ajout d'une entité - étape 1")
+
+> Remarque : si vous avez activé cette option au niveau de l'application/bot, il est possible de déclarer des 
+>_sous-entités_. Vous en apprendrez plus dans [Construire les modèles conversationnels](build-model.md).
+
+Les boutons et commandes suivantes sont disponibles pour la phrase dans sa globalité :
 
 * _Delete_ : supprime la phrase
 * _Unknown_ : qualifier la phrase en intention inconnue (réponse par défaut)
@@ -50,6 +67,8 @@ Cet écran permet de parcourir les phrases dont l'intention n'a pas été reconn
 
 Cet écran permet de faire des recherches dans l'ensemble des phrases : _Inbox_ mais aussi phrases qualifiées 
 enregistrées dans le modèle.
+
+![schéma Tock](../../img/search.png "Recherche d'une phrase")
 
 ## L'onglet _Intents_
 

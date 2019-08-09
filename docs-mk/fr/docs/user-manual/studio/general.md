@@ -21,6 +21,8 @@ sont définis dans fichier source `bot/admin/web/src/environments/environment.ts
 
 ## Le bandeau applicatif
 
+![bandeau Tock](../../img/inbox.png "Exemple d'interface Tock")
+
 En haut à gauche de l'interface se trouvent :
 
 * Un bouton permettant d'afficher (ou de masquer) les différents menus _Tock Studio_

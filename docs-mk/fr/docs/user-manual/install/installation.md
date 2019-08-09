@@ -1,3 +1,29 @@
+#### Installer Tock sur votre serveur
+
+Vous installez la stack docker de Tock sur votre serveur. 
+
+Vous conservez ainsi l'ensemble de vos données. 
+Vos développeurs utilisent l'API pour se connecter à Tock. Ils n'ont donc pas besoin d'avoir accès à la base de données de Tock.
+
+#### Utiliser la plateforme de démonstration 
+
+Vous pouvez également utiliser la [plateforme de démonstration mutualisée de Tock](https://demotock-production-admin.vsct-prod.aws.vsct.fr).
+
+Dans ce cas, il n'est pas nécessaire d'installer Tock sur vos serveurs.
+
+A noter cependant que cet usage convient pour un environnement de développement 
+et en aucun cas pour un environnement de production.
+
+
+
+
+
+
+
+
+
+
+
 # Installer et configurer Tock en production
 
 ## Composants

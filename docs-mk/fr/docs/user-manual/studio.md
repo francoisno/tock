@@ -18,7 +18,6 @@ des thèmes ou des fonctionnalités particulières :
 
 * Zooms :
     * [Construire les modèles conversationnels](studio/build-model.md)
-    * [Qualifier et suivre la performance des modèles](studio/model-qa.md)
-    * [Créer un bot multilingue / Internationalisation](i18n.md)
+    * Voir aussi [Créer un bot multilingue / Internationalisation](i18n.md)
     
 > Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 

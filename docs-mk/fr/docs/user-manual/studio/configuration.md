@@ -8,6 +8,8 @@ bots sont également disponibles via ce menu : importer/exporter une configurati
 
 Cet écran permet de créer, modifier, supprimer des applications conversationnelles Tock.
 
+![schéma Tock](../../img/applications.png "Liste des applications")
+
 > Lors de la première connexion à la [plateforme de démonstration](https://demotock-production-admin.vsct-prod.aws.vsct.fr/),
 >un assistant simplifié permet de créer la première application (le premier bot). Par la suite, vous pouvez passer par 
 >cet écran pour ajouter d'autres applications.
@@ -43,6 +45,8 @@ Pour chaque application déjà créée, vous pouvez par la suite :
         * _NLU Engine configuration_ : paramétrer finement le moteur NLU sous-jacent (les paramètres dépendant du moteur
         utilisé, [Apache OpenNLP](https://opennlp.apache.org/) ou [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/))
         * _Alexa Export_ : exporter le modèle Tock dans un format utilisable par [Alexa](https://alexa.amazon.com/)
+
+![schéma Tock](../../img/application.png "Configuration de l'application")
 
 La fonction _Upload dump_ (voir ci-dessus) est également accessible directement en bas d'écran, permettant :
 

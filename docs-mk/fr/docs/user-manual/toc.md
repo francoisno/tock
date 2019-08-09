@@ -15,21 +15,13 @@
         * [Le menu _Monitoring_](studio/monitoring.md)
     * Zooms :
         * [Construire les modèles conversationnels](studio/build-model.md)
-        * [Qualifier et suivre la performance des modèles](studio/model-qa.md)
+        * Voir aussi [Créer un bot multilingue / Internationalisation](i18n.md)
+
 
 * [Développement](dev.md) :
     * [_Tock Bot API_](dev/bot-api.md) :
-        * Architectures
-        * Mode _WebSocket_
-        * Mode _WebHook_
-        * Utiliser l'API
     * [_Tock Bot Framework_](dev/bot-framework.md) :
-        * Conception
-        * Le _bus_ Tock
-        * Les types de _Message_
-        * _StoryHandler_ & _StoryDef_
-        * _NlpListener_
-        * ...
+        * [Tests Unitaires](dev/tester.md)
 
 * [Les _connecteurs_](connectors.md) :
     * Qu'est-ce qu'un _connecteur_ Tock

@@ -6,7 +6,7 @@ repo_name: 'tock'
 repo_url: 'https://github.com/voyages-sncf-technologies/tock'
 edit_uri: ''
 nav:
-  - 'Vue d`ensemble': 'introduction.md' # intro, features, taks & videos, quick start & samples
+  - 'Vue d`ensemble': 'index.md'
   - 'Découvrir Tock (guides)': # Guides / Découvrir
       - 'Créer son premier bot': 'getting-started/start-studio.md'
       - 'Configurer Slack': 'getting-started/start-slack.md'
@@ -17,8 +17,8 @@ nav:
       - 'Table des matières': 'user-manual/toc.md'
       - 'Concepts': 'user-manual/concepts.md'
       - 'Tock Studio': 'user-manual/studio.md'
-      - 'Tock Bot API': 'user-manual/bot-api.md'
-      - 'Tock Bot Framework': 'user-manual/bot-framework.md'
+      - 'Tock Bot API': 'user-manual/dev/bot-api.md'
+      - 'Tock Bot Framework': 'user-manual/dev/bot-framework.md'
       - 'Les connecteurs': 'user-manual/connectors.md'
       - 'Multilingue / i18n': 'user-manual/i18n.md'
       - 'Installation': 'user-manual/install.md'
@@ -33,17 +33,6 @@ nav:
       - 'Remerciements': 'about/acknowledgments.md'
 
 
-#    - 'Pour commencer': 'pour-commencer.md'
-#  - 'Construire le modèle': 'construire-le-modele.md'
-#  - 'Evaluer la pertinence du modèle': 'evaluer-la-pertinence-du-modele.md'
-#  - 'Développer un Assistant': 'developper-un-assistant.md'
-#  - 'Assistant Tock':
-#    - 'Présentation du Bot Open Data': 'presentation-du-bot-open-data.md'
-#    - 'Développer': 'developper.md'
-#    - 'Tester': 'tester.md'
-#  -  'Assistant via API':
-#     - 'Développer via API': 'developper-api.md'
-#  - 'i18n': 'i18n.md'
 #  - 'APIs de Tock': 'api.md'
 #  - 'KDoc': 'kdoc.md'
 #  - 'Contribuer au projet': 'contribuer.md'
