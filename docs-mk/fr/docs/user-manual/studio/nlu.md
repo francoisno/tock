@@ -92,4 +92,4 @@ phrases reçues et réponses du bot pour un utilisateur).
 
 Rendez-vous dans [Menu _NLU QA_](nlu-qa.md) pour la suite du manuel utilisateur. 
 
-> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 
+> Vous pouvez aussi passer directement au chapitre suivant : [Développement](../dev/bot-api.md). 

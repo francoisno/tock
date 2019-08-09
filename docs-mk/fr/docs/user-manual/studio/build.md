@@ -86,4 +86,4 @@ Cet section permet de gérer des _fonctions_ activables ou désactivables via l'
 
 Rendez-vous dans [Menu _Test_](test.md) pour la suite du manuel utilisateur. 
 
-> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 
+> Vous pouvez aussi passer directement au chapitre suivant : [Développement](../dev/bot-api.md). 

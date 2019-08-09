@@ -25,7 +25,7 @@ Pour ajouter une application, cliquez sur _Create New Application_ :
 * Sélectionnez une ou plusieurs langues (voir [Construire un bot multilingue](../i18n.md) pour en savoir plus)
 
 * Sélectionnez un moteur NLU ([Apache OpenNLP](https://opennlp.apache.org/) ou [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/), 
-voir [Déployer une plateforme](../install/installation.md) pour en savoir plus)
+voir [Déployer une plateforme](../install.md) pour en savoir plus)
 
 ### Modifier, importer et exporter une application
 
@@ -107,4 +107,4 @@ configurations_ pour les voir et éventuellement les modifier.
 
 Rendez-vous dans [Menu _NLU_](nlu.md) pour la suite du manuel utilisateur. 
 
-> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 
+> Vous pouvez aussi passer directement au chapitre suivant : [Développement](../dev/bot-api.md). 

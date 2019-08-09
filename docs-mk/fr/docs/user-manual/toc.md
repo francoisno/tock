@@ -18,30 +18,13 @@
         * Voir aussi [Créer un bot multilingue / Internationalisation](i18n.md)
 
 
-* [Développement](dev.md) :
+* Développement :
     * [_Tock Bot API_](dev/bot-api.md) :
     * [_Tock Bot Framework_](dev/bot-framework.md) :
         * [Tests Unitaires](dev/tester.md)
 
-* [Les _connecteurs_](connectors.md) :
-    * Qu'est-ce qu'un _connecteur_ Tock
-    * Messenger
-    * Slack
-    * Google Assistant / Google Home
-    * Alexa / Echo
-    * Rocket.Chat
-    * WhatsApp
-    * Teams
-    * Business Chat / Messages
-    * Twitter
-    * Web
-    * Test
+* [Les _connecteurs_](connectors.md)
 
 * [Créer un bot multilingue / Internationalisation](i18n.md)
     
-* [Installation](install.md) :
-    * [Architecture](install/architecture.md)
-    * Déployer une plateforme
-    * Déployer un bot
-    * Supervision
-    * Cloud, charge et disponibilité
+* [Installation](install.md)

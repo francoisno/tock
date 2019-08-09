@@ -43,4 +43,4 @@ En haut à droite de l'interface se trouvent :
 
 Rendez-vous dans [Menu _Configuration_](configuration.md) pour la suite du manuel utilisateur. 
 
-> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 
+> Vous pouvez aussi passer directement au chapitre suivant : [Développement](../dev/bot-api.md). 

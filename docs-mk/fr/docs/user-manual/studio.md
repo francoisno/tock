@@ -20,4 +20,4 @@ des thèmes ou des fonctionnalités particulières :
     * [Construire les modèles conversationnels](studio/build-model.md)
     * Voir aussi [Créer un bot multilingue / Internationalisation](i18n.md)
     
-> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev.md). 
+> Vous pouvez aussi passer directement au chapitre suivant : [Développement](dev/bot-api.md). 

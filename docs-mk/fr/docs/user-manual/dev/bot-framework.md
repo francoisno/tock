@@ -464,8 +464,12 @@ Pour récupérer les paramètres du bouton sur lequel on a cliqué :
     val nextDate = choice(nextResultDate)
     val nextOrigin : Locality = action.jsonChoice(nextResultOrigin)
 ```
+
+### Tests Unitaires
+
+La page [Tests Unitaires](tester.md) présente le framework fourni pour réaliser des TUs  avec Tock.
  
-### Définir son propre connecteur
+### Développer son propre connecteur
 
 Il est possible de développer son propre connecteur. 
 

@@ -33,10 +33,6 @@ nav:
       - 'Remerciements': 'about/acknowledgments.md'
 
 
-#  - 'APIs de Tock': 'api.md'
-#  - 'KDoc': 'kdoc.md'
-#  - 'Contribuer au projet': 'contribuer.md'
-#  - 'Installation de Tock': 'installation.md'
 theme:
   name: 'material'
   language: 'fr'
