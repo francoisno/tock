@@ -53,6 +53,7 @@ import ai.tock.shared.injector
 import ai.tock.shared.provide
 import ai.tock.translator.I18nKeyProvider
 import ai.tock.translator.I18nLabelValue
+import mu.KotlinLogging
 
 /**
  * A new bus instance is created for each user request.
@@ -414,6 +415,7 @@ interface BotBus : Bus<BotBus> {
      * Switches the context to the specified story definition (start a new [Story]).
      */
     fun switchStory(storyDefinition: StoryDefinition, starterIntent: Intent = storyDefinition.mainIntent()) {
+        KotlinLogging.logger {  }.info("Switching to story ${storyDefinition.id}...")
         story = Story(storyDefinition, starterIntent, story.step)
         story.computeCurrentStep(userTimeline, dialog, action, intent?.wrappedIntent())
         dialog.state.currentIntent = starterIntent

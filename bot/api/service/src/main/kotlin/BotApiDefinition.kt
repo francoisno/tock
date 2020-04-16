@@ -30,6 +30,7 @@ import ai.tock.bot.definition.StoryStep
 import ai.tock.bot.engine.BotBus
 import ai.tock.shared.error
 import mu.KotlinLogging
+import org.litote.kmongo.util.idValue
 
 internal class FallbackStoryHandler(
     private val defaultUnknown: StoryDefinition,
@@ -82,7 +83,9 @@ internal class BotApiDefinition(
                     setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) },
                     setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) } + s.secondaryIntents.map { Intent(it) },
                     s.steps.map { ApiStep(it) }.toSet()
-                )
+                ).also {
+                    KotlinLogging.logger{}.info("SimpleStoryDefinition: name='${it.id}', idValue='${it.idValue}'")
+                }
             } ?: emptyList(),
         configuration.nlpModel,
         FallbackStoryDefinition(defaultUnknownStory, handler)

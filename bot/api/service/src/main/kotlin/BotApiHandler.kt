@@ -17,6 +17,8 @@
 package ai.tock.bot.api.service
 
 import ai.tock.bot.admin.bot.BotConfiguration
+import ai.tock.bot.admin.story.StoryDefinitionConfiguration
+import ai.tock.bot.admin.story.StoryDefinitionConfigurationDAO
 import ai.tock.bot.api.model.BotResponse
 import ai.tock.bot.api.model.UserRequest
 import ai.tock.bot.api.model.configuration.ClientConfiguration
@@ -43,8 +45,10 @@ import ai.tock.bot.engine.message.MessagesList
 import ai.tock.nlp.api.client.model.Entity
 import ai.tock.nlp.api.client.model.EntityType
 import ai.tock.shared.error
+import ai.tock.shared.injector
 import ai.tock.shared.jackson.mapper
 import ai.tock.shared.longProperty
+import ai.tock.shared.provide
 import ai.tock.translator.I18nContext
 import ai.tock.translator.TranslatedSequence
 import ai.tock.translator.Translator
@@ -79,10 +83,13 @@ private val wsRepository: Cache<String, WSHolder> =
 
 
 internal class BotApiHandler(
+
     private val provider: BotApiDefinitionProvider,
     configuration: BotConfiguration) {
 
     private val logger = KotlinLogging.logger {}
+
+    private val dao: StoryDefinitionConfigurationDAO = injector.provide()
 
     private val apiKey: String = configuration.apiKey
     private val webhookUrl: String? = configuration.webhookUrl
@@ -128,8 +135,80 @@ internal class BotApiHandler(
         client?.send(RequestData(configuration = true))?.botConfiguration
             ?: sendWithWebSocket(RequestData(configuration = true))?.botConfiguration
 
+    fun followStoryRedirects(stories: Map<String, StoryDefinitionConfiguration>, requestStoryId: String, switchStoryId: String?): String? {
+        return if (switchStoryId == requestStoryId)
+            requestStoryId
+        else
+            with(switchStoryId ?: requestStoryId) {
+                stories.get(this)?.features?.find { it.enabled && !it.switchToStoryId.isNullOrBlank() }?.let {
+                    followStoryRedirects(stories.filterKeys { it -> this != it }, requestStoryId, it.switchToStoryId)
+                } ?: this
+            }
+    }
+
     fun send(bus: BotBus) {
         val request = bus.toUserRequest()
+
+        // TODO : switch story?
+
+        val botDefinition = provider.botDefinition()
+        val configurationName = provider.botProviderId.configurationName
+        logger.info("botDefinition.botId = ${botDefinition.botId}, botDefinition.namespace = ${botDefinition.namespace}")
+        logger.info("configurationName = ${configurationName}")
+
+        val stories = with(botDefinition) {
+            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
+        }
+
+//        stories.forEach { logger.info("Found story: ${it.key} -> ${it.value}") }
+        val storyRedirects = stories.map { it.key to followStoryRedirects(stories, it.key, null) }.toMap()
+        storyRedirects.forEach { logger.info("Story redirect: '${it.key}' -> '${it.value}'") }
+
+        val requestStoryId = request.storyId
+        with(storyRedirects.get(requestStoryId).also { logger.info("Redirect ? $it") }) {
+            logger.info("Redirect ? $this")
+            (this != requestStoryId)?.let {
+                logger.info("Redirecting to $this")
+                stories.get(this)?.also { logger.info("Got storydefconf") }?.let {
+                    // TODO
+                    botDefinition.stories.also { logger.info("StoryDefs: " + it.map { storyDef -> storyDef.id }) }
+                            .find { it.id == this }?.also { logger.info("Got storydef") }
+                }?.let {
+                    logger.info("Switching from story '$requestStoryId' to '${it.id}'...")
+                    bus.switchStory(it)
+                }
+            }
+        }
+//        if (storySwitchs.get(requestStoryId) != requestStoryId) {
+//            stories.get(storySwitchs.get(requestStoryId)).storyDefinition(botDefinition.botId)?.let { bus.switchStory(it) }
+//        }
+
+//        with(bus) {
+//            val storyId = requestStoryId
+////            logger.info("Searching story ID '$storyId'")
+//            botDefinition.stories.find { storyDef ->
+//                val theId = storyDef.id;
+////                logger.info("Found story ID '$theId' and type ${storyDef.javaClass.name}" +
+////                " and handler ${storyDef?.storyHandler?.javaClass?.name}")
+//                theId == storyId
+//            }?.takeIf { it is SimpleStoryDefinition }?.also {
+//                logger.info("FOUND STORY DEF: story ${it} of name '${it?.id}', type ${it?.javaClass?.name}" +
+//                        " and handler ${it?.storyHandler?.javaClass?.name}")
+//
+//                dao.getStoryDefinitionByNamespaceAndBotIdAndTypeAndIntent(
+//                        namespace = botDefinition.namespace,
+//                        botId = botDefinition.botId,
+//                        type = AnswerConfigurationType.builtin,
+//                        intent = it.mainIntent().name
+//                )?.also {
+//                    logger.info("Found ${it.features.size} features in story ${it.name}")
+//                    it.features.find { it.enabled && !it.switchToStoryId.isNullOrBlank() }?.switchToStoryId?.also {
+//                        logger.info("Switching to story '${it}'...")
+//                    }
+//                }
+//            }
+//        }
+
         if (client != null) {
             val response = client.send(RequestData(request))
             bus.handleResponse(request, response?.botResponse)

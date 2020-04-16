@@ -45,7 +45,7 @@ internal class BotApiDefinitionProvider(private val configuration: BotConfigurat
             this.lastConfiguration = conf
             bot = BotApiDefinition(configuration, conf, handler)
             configurationUpdated = true
-            BotRepository.registerBuiltInStoryDefinitions(this)
+            BotRepository.registerBuiltInStoryDefinitions(this) // TODO : register intents if necessary
             BotRepository.checkBotConfigurations()
         }
     }

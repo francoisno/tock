@@ -229,7 +229,7 @@ object BotRepository {
         val botDefinition = botProvider.botDefinition()
         val configurationName = botProvider.botProviderId.configurationName
         executor.executeBlocking {
-            storyDefinitionConfigurationDAO.createBuiltInStoriesIfNotExist(
+            storyDefinitionConfigurationDAO.createBuiltInStoriesIfNotExist( // TODO : return stories with features
                 botDefinition.stories
                     .filter { it.mainIntent() != Intent.unknown }
                     .map { storyDefinition ->
