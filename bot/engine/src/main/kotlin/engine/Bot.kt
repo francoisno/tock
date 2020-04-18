@@ -113,6 +113,10 @@ internal class Bot(
 
         if (!userTimeline.userState.botDisabled) {
             connector.startTypingInAnswerTo(action, connectorData)
+
+            logger.info("Bot#handle for action $action")
+            logger.info("Bot#handle has ${botDefinition.stories.size} stories")
+
             val story = getStory(userTimeline, dialog, action)
             val bus = TockBotBus(connector, userTimeline, dialog, action, connectorData, botDefinition)
 
@@ -140,6 +144,8 @@ internal class Bot(
     }
 
     private fun getStory(userTimeline: UserTimeline, dialog: Dialog, action: Action): Story {
+        logger.info("Bot#getStory for action $action")
+
         val newIntent = dialog.state.currentIntent
         val previousStory = dialog.currentStory
 
@@ -147,7 +153,12 @@ internal class Bot(
             if (previousStory == null
                 || (newIntent != null && !previousStory.supportAction(userTimeline, dialog, action, newIntent))
             ) {
+                logger.info("botDefinition.findStoryDefinition(${newIntent?.name})")
                 val storyDefinition = botDefinition.findStoryDefinition(newIntent?.name, action.applicationId)
+                if (newIntent != null) {
+                    logger.info("storyDefinition.isStarterIntent(newIntent) = ${storyDefinition.isStarterIntent(newIntent)}")
+                }
+                logger.info("storyDefinition.mainIntent() = ${storyDefinition.mainIntent()}")
                 val newStory = Story(
                     storyDefinition,
                     if (newIntent != null && storyDefinition.isStarterIntent(newIntent)) newIntent
@@ -166,6 +177,8 @@ internal class Bot(
         //update action state
         action.state.intent = dialog.state.currentIntent?.name
         action.state.step = story.step
+
+        logger.info("Returning story $story")
 
         return story
     }

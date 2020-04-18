@@ -17,11 +17,15 @@
 package ai.tock.bot.api.service
 
 import ai.tock.bot.admin.bot.BotConfiguration
+import ai.tock.bot.admin.story.StoryDefinitionConfigurationDAO
 import ai.tock.bot.api.model.configuration.ClientConfiguration
 import ai.tock.bot.definition.BotDefinition
 import ai.tock.bot.definition.BotProvider
 import ai.tock.bot.definition.BotProviderId
 import ai.tock.bot.engine.BotRepository
+import ai.tock.bot.engine.config.ConfiguredStoryDefinition
+import ai.tock.shared.injector
+import ai.tock.shared.provide
 import mu.KotlinLogging
 
 internal class BotApiDefinitionProvider(private val configuration: BotConfiguration) : BotProvider {
@@ -34,16 +38,40 @@ internal class BotApiDefinitionProvider(private val configuration: BotConfigurat
     private var bot: BotDefinition
     private val handler: BotApiHandler = BotApiHandler(this, configuration)
 
+    private val dao: StoryDefinitionConfigurationDAO = injector.provide()
+
+    private fun mergeAllStories(clientConfiguration: ClientConfiguration?) : BotDefinition {
+
+        // Get all stories to be able to redirect (from switchToStoryId features)
+        logger.info("Client stories size: ${clientConfiguration?.stories?.size}")
+        logger.info("Client stories: ${clientConfiguration?.stories}")
+        val remoteStories = with(configuration) {
+            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId)
+                    .filter { it.configurationName == null || it.configurationName == configuration.name }
+                    .map { ConfiguredStoryDefinition(it) } // RedirectedStoryDefinition ?
+        }
+        logger.info("Remote stories size: ${remoteStories.size}")
+        logger.info("Remote stories: ${remoteStories}")
+
+        return BotApiDefinition(configuration, clientConfiguration, handler, remoteStories)
+                .also {
+                    logger.info("Bot stories size: ${it.stories.size}")
+                    logger.info("Bot stories: ${it.stories}")
+                    it.stories.forEach { story -> logger.info("Bot story '${story.id}' is '${story.storyHandler}'") }
+                }
+    }
+
     init {
         lastConfiguration = handler.configuration()
-        bot = BotApiDefinition(configuration, lastConfiguration, handler)
+        bot = mergeAllStories(lastConfiguration)
     }
 
     fun updateIfConfigurationChange(conf: ClientConfiguration) {
         logger.debug { "check conf $conf" }
         if (conf != lastConfiguration) {
             this.lastConfiguration = conf
-            bot = BotApiDefinition(configuration, conf, handler)
+
+            bot = mergeAllStories(lastConfiguration)
             configurationUpdated = true
             BotRepository.registerBuiltInStoryDefinitions(this) // TODO : register intents if necessary
             BotRepository.checkBotConfigurations()

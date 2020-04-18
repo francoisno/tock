@@ -17,11 +17,12 @@
 package ai.tock.bot.engine.config
 
 import ai.tock.bot.admin.answer.AnswerConfigurationType.builtin
-import ai.tock.bot.definition.BotDefinition
-import ai.tock.bot.definition.Intent
+import ai.tock.bot.admin.story.StoryDefinitionConfiguration
+import ai.tock.bot.admin.story.StoryDefinitionConfigurationDAO
+import ai.tock.bot.definition.*
 import ai.tock.bot.definition.Intent.Companion.unknown
-import ai.tock.bot.definition.IntentAware
-import ai.tock.bot.definition.StoryDefinition
+import ai.tock.shared.injector
+import ai.tock.shared.provide
 import mu.KotlinLogging
 
 /**
@@ -37,11 +38,48 @@ internal class BotDefinitionWrapper(val botDefinition: BotDefinition) : BotDefin
     @Volatile
     private var allStories: List<StoryDefinition> = botDefinition.stories
 
+    private val dao: StoryDefinitionConfigurationDAO = injector.provide()
+
+    @Volatile
+    private var storyConfRedirections: Map<String, String?> = emptyMap()
+
+    @Volatile
+    private var storyRedirections: Map<StoryDefinition, StoryDefinition> = emptyMap()
+
     fun updateStories(configuredStories: List<ConfiguredStoryDefinition>) {
-        logger.debug { "refresh configured stories for ${botDefinition.botId}" }
+        logger.info { "Refreshing configured stories for ${botDefinition.botId}" }
         this.configuredStories = configuredStories.filter { it.answerType != builtin }.groupBy { it.id }
         //configured stories can override built-in
         allStories = (this.configuredStories + botDefinition.stories.groupBy { it.id }).values.flatten()
+        logger.info("allStories: $allStories (${allStories.size})")
+
+        logger.info("Computing story redirections...")
+        val storyConfigurations = with(botDefinition) {
+            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
+        }
+        storyConfRedirections = storyConfigurations.map { it.key to followStoryRedirects(storyConfigurations, it.key, null) }.toMap().also {
+            it.forEach { logger.info("Story redirection: '${it.key}' -> '${it.value}'") }
+//            val storyMap = it.map { allStories.find {
+//                storyDef -> storyDef.id to when (it) {
+//                is ConfiguredStoryDefinition -> storyDef //!it.configuration.hasOnlyDisabledFeature(applicationId)
+//                else -> storyDef
+//            }
+        }
+        storyRedirections = allStories.map {
+            logger.info("Mapping story ${it.mainIntent().name}...")
+            it to when (it) {
+                is ConfiguredStoryDefinition ->
+                    storyConfRedirections[it.configuration.storyId].let { newId -> allStories.find { story -> story is ConfiguredStoryDefinition && story.configuration.storyId == newId } }
+                            ?: it
+                else -> it
+            }.also {
+                theStory -> logger.info("Mapped to ${theStory.mainIntent().name}...")
+            }
+        }.toMap().also {
+            it.forEach {
+                    logger.info("StoryDef redirection: ${it.key.mainIntent().name} -> ${it.value.mainIntent().name}")
+            }
+        }
     }
 
     override val stories: List<StoryDefinition>
@@ -59,8 +97,32 @@ internal class BotDefinitionWrapper(val botDefinition: BotDefinition) : BotDefin
         return findStoryDefinition(intent?.wrappedIntent()?.name)
     }
 
+    fun followStoryRedirects(stories: Map<String, StoryDefinitionConfiguration>, requestStoryId: String, switchStoryId: String?): String? {
+        return if (switchStoryId == requestStoryId)
+            requestStoryId
+        else
+            with(switchStoryId ?: requestStoryId) {
+                stories.get(this)?.features?.find { it.enabled && !it.switchToStoryId.isNullOrBlank() }?.let {
+                    followStoryRedirects(stories.filterKeys { it -> this != it }, requestStoryId, it.switchToStoryId)
+                } ?: this
+            }
+    }
+
     override fun findStoryDefinition(intent: String?, applicationId: String?): StoryDefinition =
-        intent?.let { i ->
+
+            (intent?.also {
+                logger.info("Entering findStoryDefinition...")
+//                logger.info("allStories in wrapper: $allStories (${allStories.size})")
+//
+//                val storyConfigurations = with(botDefinition) {
+//                    dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
+//                }
+//                val storyRedirects = storyConfigurations.map { it.key to followStoryRedirects(storyConfigurations, it.key, null) }.toMap()
+//                storyRedirects.forEach { logger.info("Story redirect: '${it.key}' -> '${it.value}'") }
+//
+//                // TODO : follow redirects?
+
+        }.let { i ->
             configuredStories[i]
                 ?.firstOrNull()
                 //does not take if story is disabled
@@ -76,7 +138,14 @@ internal class BotDefinitionWrapper(val botDefinition: BotDefinition) : BotDefin
                 intent,
                 unknownStory,
                 keywordStory
-            )
+            ).also {
+                logger.info("Found story ${it.id} / ${it.mainIntent().name}")
+            }
+                    ).let {
+                        storyRedirections[it] ?: it
+                    }.also {
+                        logger.info("Returning story ${it.id} / ${it.mainIntent().name}")
+                    }
 
     override fun toString(): String {
         return "Wrapper($botDefinition)"

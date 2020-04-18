@@ -147,38 +147,59 @@ internal class BotApiHandler(
     }
 
     fun send(bus: BotBus) {
+
+//        val inputStoryId = bus.story;
+//        val inputIntent = bus.intent;
+//        logger.info("Bus story: $inputStoryId")
+//        logger.info("Bus intent: $inputIntent")
+
+
         val request = bus.toUserRequest()
-
-        // TODO : switch story?
-
-        val botDefinition = provider.botDefinition()
-        val configurationName = provider.botProviderId.configurationName
-        logger.info("botDefinition.botId = ${botDefinition.botId}, botDefinition.namespace = ${botDefinition.namespace}")
-        logger.info("configurationName = ${configurationName}")
-
-        val stories = with(botDefinition) {
-            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
-        }
-
-//        stories.forEach { logger.info("Found story: ${it.key} -> ${it.value}") }
-        val storyRedirects = stories.map { it.key to followStoryRedirects(stories, it.key, null) }.toMap()
-        storyRedirects.forEach { logger.info("Story redirect: '${it.key}' -> '${it.value}'") }
-
-        val requestStoryId = request.storyId
-        with(storyRedirects.get(requestStoryId).also { logger.info("Redirect ? $it") }) {
-            logger.info("Redirect ? $this")
-            (this != requestStoryId)?.let {
-                logger.info("Redirecting to $this")
-                stories.get(this)?.also { logger.info("Got storydefconf") }?.let {
-                    // TODO
-                    botDefinition.stories.also { logger.info("StoryDefs: " + it.map { storyDef -> storyDef.id }) }
-                            .find { it.id == this }?.also { logger.info("Got storydef") }
-                }?.let {
-                    logger.info("Switching from story '$requestStoryId' to '${it.id}'...")
-                    bus.switchStory(it)
-                }
-            }
-        }
+//        logger.info("Request from bus: $request")
+//
+//        // TODO : switch story?
+//
+//        val botDefinition = provider.botDefinition()
+//        val configurationName = provider.botProviderId.configurationName
+//        logger.info("botDefinition.botId = ${botDefinition.botId}, botDefinition.namespace = ${botDefinition.namespace}")
+//        logger.info("configurationName = ${configurationName}")
+//
+//        val stories = with(botDefinition) {
+//            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
+//        }
+//
+////                with(botDefinition) {
+////            dao.getStoryDefinitionsByNamespaceAndBotId(namespace, botId).map { story -> story.storyId to story }.toMap()
+////        }
+//
+////        stories.forEach { logger.info("Found story: ${it.key} -> ${it.value}") }
+//        val storyRedirects = stories.map { it.key to followStoryRedirects(stories, it.key, null) }.toMap()
+//        storyRedirects.forEach { logger.info("Story redirect: '${it.key}' -> '${it.value}'") }
+//
+//        val requestStoryId = request.storyId
+//        logger.info("Request storyID: $requestStoryId")
+//        logger.info("Story redirections: $storyRedirects")
+//        val redirectStoryId = storyRedirects.get(requestStoryId)
+//        logger.info("Redirect story to: $redirectStoryId")
+//        with(redirectStoryId.also { logger.info("Redirect ? $it") }) {
+//            logger.info("Redirect ? $this")
+//            (this != requestStoryId)?.let {
+//                logger.info("Redirecting to $this")
+//                stories.get(this)?.also { logger.info("Got storydefconf") }?.let {
+//                    // TODO : get StoryDef
+//
+////                    botDefinition.findStoryDefinition()
+//
+//
+//
+//                    botDefinition.stories.also { logger.info("StoryDefs: " + it.map { storyDef -> storyDef.id }) }
+//                            .find { it.id == this }?.also { logger.info("Got storydef") }
+//                }?.let {
+//                    logger.info("Switching from story '$requestStoryId' to '${it.id}'...")
+//                    bus.switchStory(it)
+//                }
+//            }
+//        }
 //        if (storySwitchs.get(requestStoryId) != requestStoryId) {
 //            stories.get(storySwitchs.get(requestStoryId)).storyDefinition(botDefinition.botId)?.let { bus.switchStory(it) }
 //        }
@@ -280,6 +301,8 @@ internal class BotApiHandler(
 
             //switch story if new story
             if (response.storyId != request.storyId) {
+                logger.info("Request story: ${request.storyId}")
+                logger.info("Response story: ${response.storyId}")
                 botDefinition.stories.find { it.id == response.storyId }
                     ?.also {
                         switchStory(it)

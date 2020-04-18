@@ -19,6 +19,7 @@ package ai.tock.bot.api.service
 import ai.tock.bot.admin.bot.BotConfiguration
 import ai.tock.bot.api.model.configuration.ClientConfiguration
 import ai.tock.bot.api.model.configuration.StepConfiguration
+import ai.tock.bot.api.model.configuration.StoryConfiguration
 import ai.tock.bot.definition.BotDefinitionBase
 import ai.tock.bot.definition.Intent
 import ai.tock.bot.definition.IntentAware
@@ -69,24 +70,28 @@ internal class ApiStep(s: StepConfiguration) : StoryStep<StoryHandlerDefinition>
 internal class BotApiDefinition(
     configuration: BotConfiguration,
     clientConfiguration: ClientConfiguration?,
-    handler: BotApiHandler) :
+    handler: BotApiHandler,
+    remoteStories: List<StoryDefinition> = emptyList()) :
     BotDefinitionBase(
         configuration.botId,
         configuration.namespace,
-        clientConfiguration
-            ?.stories
-            ?.filter { it.mainIntent != Intent.unknown.name }
-            ?.map { s ->
-                SimpleStoryDefinition(
-                    s.name,
-                    FallbackStoryHandler(defaultUnknownStory, handler),
-                    setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) },
-                    setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) } + s.secondaryIntents.map { Intent(it) },
-                    s.steps.map { ApiStep(it) }.toSet()
-                ).also {
-                    KotlinLogging.logger{}.info("SimpleStoryDefinition: name='${it.id}', idValue='${it.idValue}'")
-                }
-            } ?: emptyList(),
+        remoteStories.toMutableList().apply {
+            clientConfiguration
+                    ?.stories
+                    ?.filter { it.mainIntent != Intent.unknown.name }
+                    ?.map { s ->
+                        SimpleStoryDefinition(
+                                s.name,
+                                FallbackStoryHandler(defaultUnknownStory, handler),
+                                setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) },
+                                setOf(Intent(s.mainIntent)) + s.otherStarterIntents.map { Intent(it) } + s.secondaryIntents.map { Intent(it) },
+                                s.steps.map { ApiStep(it) }.toSet()
+                        ).also {
+                            KotlinLogging.logger{}.info("SimpleStoryDefinition: name='${it.id}', idValue='${it.idValue}', " +
+                                    "storyDef='${it.storyHandler.idValue}'")
+                        }
+                    }?.let { addAll(it) }
+        },
         configuration.nlpModel,
         FallbackStoryDefinition(defaultUnknownStory, handler)
     ) {

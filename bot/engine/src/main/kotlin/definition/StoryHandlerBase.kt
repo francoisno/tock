@@ -104,8 +104,12 @@ abstract class StoryHandlerBase<out T : StoryHandlerDefinition>(
 
     final override fun handle(bus: BotBus) {
         val storyDefinition = findStoryDefinition(bus)
+
+        logger.info("storyDef from bus: $storyDefinition")
+
         //if not supported user interface, use unknown
         if (storyDefinition?.unsupportedUserInterfaces?.contains(bus.userInterfaceType) == true) {
+            logger.info("Handling unknown story!")
             bus.botDefinition.unknownStory.storyHandler.handle(bus)
         } else {
             //set current i18n provider
@@ -113,7 +117,13 @@ abstract class StoryHandlerBase<out T : StoryHandlerDefinition>(
 
             val mainData = checkPreconditions().invoke(bus)?.takeUnless { it is Unit }
             if (!isEndCalled(bus)) {
+
+                logger.info("mainData from bus preconditions: $mainData")
+
                 val handler: T = newHandlerDefinition(bus, mainData)
+
+                logger.info("handler: ${handler}")
+                logger.info("handler story: ${handler.story}")
 
                 //select steps from bus
                 selectStepFromStoryHandlerAndData(handler, mainData, storyDefinition)?.also {

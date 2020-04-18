@@ -17,6 +17,7 @@
 package ai.tock.bot.definition
 
 import ai.tock.bot.engine.BotBus
+import mu.KotlinLogging
 
 /**
  * [StoryHandlerDefinition] for [SimpleStoryHandlerBase].
@@ -26,6 +27,7 @@ internal class SimpleStoryHandlerDefinition(
         private val storyHandler: SimpleStoryHandlerBase) : BotBus by bus, StoryHandlerDefinition {
 
     override fun handle() {
+        KotlinLogging.logger {}.info("storyHandler: $storyHandler")
         storyHandler.action(bus)
     }
 }
